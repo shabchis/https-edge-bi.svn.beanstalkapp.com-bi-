@@ -13,8 +13,6 @@ from
 	inner join [Edge_OLTP].dbo.User_GUI_Account AC
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
-where
-	edge.Creative_GK != easy.Creative_GK
 ;
 
 -- ======================
@@ -29,8 +27,6 @@ from
 	inner join [Edge_OLTP].dbo.User_GUI_Account AC
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
-where
-	edge.Keyword_GK != easy.Keyword_GK
 ;
 
 -- ======================
@@ -45,8 +41,6 @@ from
 	inner join [Edge_OLTP].dbo.User_GUI_Account AC
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
-where
-	edge.Site_GK != easy.Site_GK
 ;
 
 -- ======================
@@ -63,266 +57,215 @@ from
 	inner join [Edge_OLTP].dbo.User_GUI_Account AC
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
-where
-	edge.Campaign_GK != easy.Campaign_GK
 ;
 
 -- ======================
 -- adgroups
-select * 
+
+select easy.Adgroup_GK as adgroup_easy, edge.Adgroup_GK as adgroup_edge
 into #adgroups
 from
-(
-	-- get invalid adgroups from VALID campaigns
-	select easy.Adgroup_GK as adgroup_easy, edge.Adgroup_GK as adgroup_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdGroup easy
-		inner join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdGroup edge on
-			edge.Account_ID = easy.Account_ID and
-			edge.Channel_ID = easy.Channel_ID and
-			edge.Campaign_GK = easy.Campaign_GK and
-			isnull(edge.adgroup,'')  = isnull(easy.adgroup,'') COLLATE Hebrew_CI_AI
-		inner join [Edge_OLTP].dbo.User_GUI_Account AC
-			on AC.account_id = easy.Account_ID and 
-			AC.[Status] != 0
-	where
-		edge.Adgroup_GK != easy.Adgroup_GK  and
-		edge.Campaign_GK not in (select campaign_edge from #campaigns)
-		
-	union all
-	
-	-- get invalid adgroups from INVALID campaigns
-	select NULL as adgroup_easy, edge.Adgroup_GK as adgroup_edge
-	from
-		[Edge_OLTP].dbo.UserProcess_GUI_PaidAdGroup edge
-	where
-		edge.Campaign_GK in (select campaign_edge from #campaigns)
-		
-	union all
-	
-	-- add missing adgroups that need copying
-	select easy.Adgroup_GK as adgroup_easy, NULL as adgroup_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdGroup easy
-	where
-		easy.Campaign_GK in (select campaign_easy from #campaigns)
-) as ad;
-	
-select COUNT(distinct adgroup_easy) as adgroup_easy, COUNT(distinct adgroup_edge) as adgroup_edge from #adgroups;
+	[easynet_OLTP].dbo.UserProcess_GUI_PaidAdGroup easy
+	inner join #campaigns on
+		#campaigns.campaign_easy = easy.Campaign_GK
+	inner join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdGroup edge on
+		edge.Account_ID = easy.Account_ID and
+		edge.Channel_ID = easy.Channel_ID and
+		edge.Campaign_GK = #campaigns.campaign_edge and
+		isnull(edge.adgroup,'')  = isnull(easy.adgroup,'') COLLATE Hebrew_CI_AI
+	inner join [Edge_OLTP].dbo.User_GUI_Account AC
+		on AC.account_id = easy.Account_ID and 
+		AC.[Status] != 0
 
 -- ======================
 -- ppc creatives
-select * 
+select easy.PPC_Creative_GK as ppccreative_easy, edge.PPC_Creative_GK as ppccreative_edge
 into #ppccreatives
 from
-(
-	-- get invalid creatives from VALID campaigns/adgroup/creative matches
-	select easy.PPC_Creative_GK as ppccreative_easy, edge.PPC_Creative_GK as ppccreative_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative easy
-		left outer join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative edge on
-			edge.Account_ID = easy.Account_ID and
-			edge.Channel_ID = easy.Channel_ID and
-			edge.Campaign_GK = easy.Campaign_GK and
-			edge.AdGroup_GK = easy.AdGroup_GK and
-			edge.Creative_GK = easy.Creative_GK and
-			isnull(edge.creativeDestUrl,'') = isnull(easy.creativeDestUrl,'') COLLATE Hebrew_CI_AI and
-			isnull(edge.creativeVisUrl,'') = isnull(easy.creativeVisUrl,'') COLLATE Hebrew_CI_AI
-		inner join [Edge_OLTP].dbo.User_GUI_Account AC
-			on AC.account_id = easy.Account_ID and
-			AC.[Status] != 0
-	where
-		(edge.PPC_Creative_GK is null or edge.PPC_Creative_GK != easy.PPC_Creative_GK ) and
-		edge.Campaign_GK not in (select campaign_edge from #campaigns) and
-		edge.Adgroup_GK not in (select adgroup_edge from #adgroups) and
-		edge.Creative_GK not in (select creative_edge from #creatives)
-		
-	union all
-	
-	-- get invalid creatives from INVALID campaigns/adgroup/creative matches
-	select NULL as ppccreative_easy, edge.PPC_Creative_GK as ppccreative_edge
-	from
-		[Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative edge
-	where
-		edge.Campaign_GK in (select campaign_edge from #campaigns) or
-		edge.Adgroup_GK in (select adgroup_edge from #adgroups) or
-		edge.Creative_GK in (select creative_edge from #creatives)
-		
-	union all
-	
-	-- get missing creatives
-	select easy.PPC_Creative_GK as ppccreative_easy, NULL as ppccreative_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative easy
-	where
-		easy.Campaign_GK in (select campaign_easy from #campaigns) or
-		easy.Adgroup_GK in (select adgroup_easy from #adgroups) or
-		easy.Creative_GK in (select creative_easy from #creatives)
-) as ad;
-	
-select COUNT(distinct ppccreative_easy) as ppccreative_easy, COUNT(distinct ppccreative_edge) as ppccreative_edge from #ppccreatives;
+	[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative easy
+	inner join #campaigns on
+		easy.Campaign_GK = #campaigns.campaign_easy
+	inner join #adgroups on
+		easy.AdGroup_GK = #adgroups.adgroup_easy
+	inner join #creatives on 
+		easy.Creative_GK = #creatives.creative_easy
+	inner join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative edge on
+		edge.Account_ID = easy.Account_ID and
+		edge.Channel_ID = easy.Channel_ID and
+		edge.Campaign_GK = #campaigns.campaign_edge and
+		edge.AdGroup_GK = #adgroups.adgroup_edge and
+		edge.Creative_GK = #creatives.creative_edge and
+		isnull(edge.creativeDestUrl,'') = isnull(easy.creativeDestUrl,'') COLLATE Hebrew_CI_AI and
+		isnull(edge.creativeVisUrl,'') = isnull(easy.creativeVisUrl,'') COLLATE Hebrew_CI_AI
+	inner join [Edge_OLTP].dbo.User_GUI_Account AC
+		on AC.account_id = easy.Account_ID and
+		AC.[Status] != 0
+;
 
 -- ======================
 -- ppc keywords
-select * 
+
+select easy.PPC_Keyword_GK as ppckw_easy, edge.PPC_Keyword_GK as ppckw_edge
 into #ppckeywords
 from
-(
-	-- get invalid creatives from VALID campaigns/adgroup/creative matches
-	select easy.PPC_Keyword_GK as ppckw_easy, edge.PPC_Keyword_GK as ppckw_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword easy
-		left outer join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword edge on
-			edge.Account_ID = easy.Account_ID and
-			edge.Channel_ID = easy.Channel_ID and
-			edge.Campaign_GK = easy.Campaign_GK and
-			edge.AdGroup_GK = easy.AdGroup_GK and
-			edge.Keyword_GK = easy.Keyword_GK and
-			edge.MatchType = easy.MatchType
-		inner join [Edge_OLTP].dbo.User_GUI_Account AC
-			on AC.account_id = easy.Account_ID and
-			AC.[Status] != 0
-	where
-		(edge.PPC_Keyword_GK is null or edge.PPC_Keyword_GK != easy.PPC_Keyword_GK ) and
-		edge.Campaign_GK not in (select campaign_edge from #campaigns) and
-		edge.Adgroup_GK not in (select adgroup_edge from #adgroups) and
-		edge.Keyword_GK not in (select kw_edge from #keywords)
-		
-	union all
-	
-	-- get invalid creatives from INVALID campaigns/adgroup/creative matches
-	select NULL as ppckw_easy, edge.PPC_Keyword_GK as ppckw_edge
-	from
-		[Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword edge
-	where
-		edge.Campaign_GK in (select campaign_edge from #campaigns) or
-		edge.Adgroup_GK in (select adgroup_edge from #adgroups) or
-		edge.Keyword_GK in (select kw_edge from #keywords)
-		
-	union all
-	
-	-- get missing keywords
-	select easy.PPC_Keyword_GK as ppckw_easy, NULL as ppckw_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword easy
-	where
-		easy.Campaign_GK in (select campaign_easy from #campaigns) or
-		easy.Adgroup_GK in (select adgroup_easy from #adgroups) or
-		easy.Keyword_GK in (select kw_easy from #keywords)
-) as ad;
-	
-select COUNT(distinct ppckw_easy) as ppckw_easy, COUNT(distinct ppckw_edge) as ppckw_edge from #ppckeywords;
+	[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword easy
+	inner join #campaigns on
+		easy.Campaign_GK = #campaigns.campaign_easy
+	inner join #adgroups on
+		easy.AdGroup_GK = #adgroups.adgroup_easy
+	inner join #keywords on
+		easy.Keyword_GK = #keywords.kw_easy
+	inner join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword edge on
+		edge.Account_ID = easy.Account_ID and
+		edge.Channel_ID = easy.Channel_ID and
+		edge.Campaign_GK = #campaigns.campaign_edge and
+		edge.AdGroup_GK = #adgroups.adgroup_edge and
+		edge.Keyword_GK = #keywords.kw_edge and
+		edge.MatchType = easy.MatchType
+	inner join [Edge_OLTP].dbo.User_GUI_Account AC
+		on AC.account_id = easy.Account_ID and
+		AC.[Status] != 0
+;
 
 -- ======================
 -- ppc sites
-select * 
+
+select easy.PPC_Site_GK as ppcsite_easy, edge.PPC_Site_GK as ppcsite_edge
 into #ppcsites
 from
-(
-	-- get invalid creatives from VALID campaigns/adgroup/creative matches
-	select easy.PPC_Site_GK as ppcsite_easy, edge.PPC_Site_GK as ppcsite_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite easy
-		left outer join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite edge on
-			edge.Account_ID = easy.Account_ID and
-			edge.Channel_ID = easy.Channel_ID and
-			edge.Campaign_GK = easy.Campaign_GK and
-			edge.AdGroup_GK = easy.AdGroup_GK and
-			edge.Site_GK = easy.Site_GK and
-			edge.MatchType = easy.MatchType
-		inner join [Edge_OLTP].dbo.User_GUI_Account AC
-			on AC.account_id = easy.Account_ID and
-			AC.[Status] != 0
-	where
-		(edge.PPC_Site_GK is null or edge.PPC_Site_GK != easy.PPC_Site_GK ) and
-		edge.Campaign_GK not in (select campaign_edge from #campaigns) and
-		edge.Adgroup_GK not in (select adgroup_edge from #adgroups) and
-		edge.Site_GK not in (select site_edge from #sites)
-		
-	union all
-	
-	-- get invalid creatives from INVALID campaigns/adgroup/creative matches
-	select NULL as ppcsite_easy, edge.PPC_Site_GK as ppcsite_edge
-	from
-		[Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite edge
-	where
-		edge.Campaign_GK in (select campaign_edge from #campaigns) or
-		edge.Adgroup_GK in (select adgroup_edge from #adgroups) or
-		edge.Site_GK in (select site_edge from #sites)
-		
-	union all
-	
-	-- get missing sites
-	select easy.PPC_Site_GK as ppckw_easy, NULL as ppckw_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite easy
-	where
-		easy.Campaign_GK in (select campaign_easy from #campaigns) or
-		easy.Adgroup_GK in (select adgroup_easy from #adgroups) or
-		easy.Site_GK in (select site_easy from #sites)
-) as ad;
-	
-select COUNT(distinct ppcsite_easy) as ppcsite_easy, COUNT(distinct ppcsite_edge) as ppcsite_edge from #ppcsites;
+	[easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite easy
+	inner join #campaigns on
+		easy.Campaign_GK = #campaigns.campaign_easy
+	inner join #adgroups on
+		easy.AdGroup_GK = #adgroups.adgroup_easy
+	inner join #sites on
+		easy.Site_GK = #sites.site_easy
+	inner join [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite edge on
+		edge.Account_ID = easy.Account_ID and
+		edge.Channel_ID = easy.Channel_ID and
+		edge.Campaign_GK = #campaigns.campaign_edge and
+		edge.AdGroup_GK = #adgroups.adgroup_edge and
+		edge.Site_GK = #sites.site_edge and
+		edge.MatchType = easy.MatchType
+	inner join [Edge_OLTP].dbo.User_GUI_Account AC
+		on AC.account_id = easy.Account_ID and
+		AC.[Status] != 0
+;
 
 -- ======================
 -- ppc sites
-select * 
+select easy.Gateway_GK as gw_easy, edge.Gateway_GK as gw_edge
 into #gateways
 from
-(
-	-- get invalid creatives from VALID campaigns/adgroup/creative matches
-	select easy.Gateway_GK as gw_easy, edge.Gateway_GK as gw_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_Gateway easy
-		left outer join [Edge_OLTP].dbo.UserProcess_GUI_Gateway edge on
-			edge.Account_ID = easy.Account_ID and
-			edge.Gateway_id = easy.Gateway_id
-		inner join [Edge_OLTP].dbo.User_GUI_Account AC
-			on AC.account_id = easy.Account_ID and
-			AC.[Status] != 0
-	where
-		(edge.Gateway_GK is null or edge.Gateway_GK != easy.Gateway_GK ) and
-		edge.Campaign_GK not in (select campaign_edge from #campaigns) and
-		edge.Adgroup_GK not in (select adgroup_edge from #adgroups) and
-		(
-			(edge.Reference_Type is null) or
-			(edge.Reference_Type = 0 and edge.Reference_ID not in (select creative_edge from #creatives)) or
-			(edge.Reference_Type = 1 and edge.Reference_ID not in (select kw_edge from #keywords))
-		)		
-	union all
+	[easynet_OLTP].dbo.UserProcess_GUI_Gateway easy
+	inner join [Edge_OLTP].dbo.UserProcess_GUI_Gateway edge on
+		edge.Account_ID = easy.Account_ID and
+		edge.Gateway_id = CAST(easy.Gateway_id AS nvarchar(MAX))
+	inner join [Edge_OLTP].dbo.User_GUI_Account AC
+		on AC.account_id = easy.Account_ID and
+		AC.[Status] != 0
 	
-	-- get invalid creatives from INVALID campaigns/adgroup/creative matches
-	select NULL as gw_easy, edge.Gateway_GK as gw_edge
-	from
-		[Edge_OLTP].dbo.UserProcess_GUI_Gateway edge
-	where
-		edge.Campaign_GK in (select campaign_edge from #campaigns) and
-		edge.Adgroup_GK in (select adgroup_edge from #adgroups) and
-		(
-			(edge.Reference_Type is null) or
-			(edge.Reference_Type = 0 and edge.Reference_ID in (select creative_edge from #creatives)) or
-			(edge.Reference_Type = 1 and edge.Reference_ID in (select kw_edge from #keywords))
-		)
-	
-	union all
-	
-	-- add missing gateways
-	select easy.Gateway_GK as gw_easy, NULL as gw_edge
-	from
-		[easynet_OLTP].dbo.UserProcess_GUI_Gateway easy
-	where
-		easy.Campaign_GK in (select campaign_easy from #campaigns) or
-		easy.Adgroup_GK in (select adgroup_easy from #adgroups) or
-		(
-			(easy.Reference_Type is null) or
-			(easy.Reference_Type = 0 and easy.Reference_ID in (select creative_easy from #creatives)) or
-			(easy.Reference_Type = 1 and easy.Reference_ID in (select kw_easy from #keywords))
-		)
-) as ad;
-	
-select COUNT(distinct gw_easy) as gw_easy, COUNT(distinct gw_edge) as gw_edge from #gateways;
+-- =====================================================
+
+-- campaigns
+update [Edge_OLTP].dbo.UserProcess_GUI_PaidCampaign
+set
+	Segment1 = easy.Segment1,
+	Segment2 = easy.Segment2,
+	Segment3 = easy.Segment3,
+	Segment4 = easy.Segment4,
+	Segment5 = easy.Segment5
+from
+	[Edge_OLTP].dbo.UserProcess_GUI_PaidCampaign edge
+	inner join #campaigns on
+		edge.Campaign_GK = #campaigns.campaign_edge
+	inner join [easynet_OLTP].dbo.UserProcess_GUI_PaidCampaign easy on
+		easy.Campaign_GK = #campaigns.campaign_easy
+;
+
+-- adgroups
+update [Edge_OLTP].dbo.UserProcess_GUI_PaidAdGroup
+set
+	Segment1 = easy.Segment1,
+	Segment2 = easy.Segment2,
+	Segment3 = easy.Segment3,
+	Segment4 = easy.Segment4,
+	Segment5 = easy.Segment5
+from
+	[Edge_OLTP].dbo.UserProcess_GUI_PaidAdGroup edge
+	inner join #adgroups on
+		edge.Adgroup_GK = #adgroups.adgroup_edge
+	inner join [easynet_OLTP].dbo.UserProcess_GUI_PaidAdGroup easy on
+		easy.Adgroup_GK = #adgroups.adgroup_easy
+;
+
+-- ppc creatives
+update [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative
+set
+	Segment1 = easy.Segment1,
+	Segment2 = easy.Segment2,
+	Segment3 = easy.Segment3,
+	Segment4 = easy.Segment4,
+	Segment5 = easy.Segment5
+from
+	[Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative edge
+	inner join #ppccreatives on
+		edge.PPC_Creative_GK = #ppccreatives.ppccreative_edge
+	inner join [easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupCreative easy on
+		easy.PPC_Creative_GK = #ppccreatives.ppccreative_easy
+;
+
+-- ppc keywords
+update [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword
+set
+	Segment1 = easy.Segment1,
+	Segment2 = easy.Segment2,
+	Segment3 = easy.Segment3,
+	Segment4 = easy.Segment4,
+	Segment5 = easy.Segment5
+from
+	[Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword edge
+	inner join #ppckeywords on
+		edge.PPC_Keyword_GK = #ppckeywords.ppckw_edge
+	inner join [easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupKeyword easy on
+		easy.PPC_Keyword_GK = #ppckeywords.ppckw_easy
+;
+
+-- ppc sites
+update [Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite
+set
+	Segment1 = easy.Segment1,
+	Segment2 = easy.Segment2,
+	Segment3 = easy.Segment3,
+	Segment4 = easy.Segment4,
+	Segment5 = easy.Segment5
+from
+	[Edge_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite edge
+	inner join #ppcsites on
+		edge.PPC_Site_GK = #ppcsites.ppcsite_edge
+	inner join [easynet_OLTP].dbo.UserProcess_GUI_PaidAdgroupSite easy on
+		easy.PPC_Site_GK = #ppcsites.ppcsite_easy
+;
+
+-- gateways
+update [Edge_OLTP].dbo.UserProcess_GUI_Gateway
+set
+	Segment1 = easy.Segment1,
+	Segment2 = easy.Segment2,
+	Segment3 = easy.Segment3,
+	Segment4 = easy.Segment4,
+	Segment5 = easy.Segment5,
+	Page_GK = easy.Page_GK
+from
+	[Edge_OLTP].dbo.UserProcess_GUI_Gateway edge
+	inner join #gateways on
+		edge.Gateway_GK = #gateways.gw_edge
+	inner join [easynet_OLTP].dbo.UserProcess_GUI_Gateway easy on
+		easy.Gateway_GK = #gateways.gw_easy
+;
 
 -- =====================================================
+
 drop table #campaigns;
 drop table #adgroups;
 drop table #creatives;
