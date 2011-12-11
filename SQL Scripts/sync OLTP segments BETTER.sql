@@ -1,5 +1,7 @@
+-- =====================================================
+-- GET IDENTITIES
+-- =====================================================
 
--- ======================
 -- creatives
 select easy.Creative_GK as creative_easy, edge.Creative_GK as creative_edge
 into #creatives
@@ -14,6 +16,8 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_creatives_easy on #creatives ( creative_easy asc );
+create nonclustered index temp_creatives_edge on #creatives ( creative_edge asc );
 
 -- ======================
 -- keywords
@@ -28,6 +32,8 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_keywords_easy on #keywords ( kw_easy asc );
+create nonclustered index temp_keywords_edge on #keywords ( kw_edge asc );
 
 -- ======================
 -- sites
@@ -42,6 +48,8 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_sites_easy on #sites ( site_easy asc );
+create nonclustered index temp_sites_edge on #sites ( site_edge asc );
 
 -- ======================
 -- campaigns
@@ -58,6 +66,8 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_campaigns_easy on #campaigns ( campaign_easy asc );
+create nonclustered index temp_campaigns_edge on #campaigns ( campaign_edge asc );
 
 -- ======================
 -- adgroups
@@ -76,6 +86,9 @@ from
 	inner join [Edge_OLTP].dbo.User_GUI_Account AC
 		on AC.account_id = easy.Account_ID and 
 		AC.[Status] != 0
+
+create nonclustered index temp_adgroups_easy on #adgroups ( adgroup_easy asc );
+create nonclustered index temp_adgroups_edge on #adgroups ( adgroup_edge asc );
 
 -- ======================
 -- ppc creatives
@@ -101,6 +114,8 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_ppccreative_easy on #ppccreatives ( ppccreative_easy asc );
+create nonclustered index temp_ppccreative_edge on #ppccreatives ( ppccreative_edge asc );
 
 -- ======================
 -- ppc keywords
@@ -126,6 +141,8 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_ppckeywords_easy on #ppckeywords ( ppckw_easy asc );
+create nonclustered index temp_ppckeywords_edge on #ppckeywords ( ppckw_edge asc );
 
 -- ======================
 -- ppc sites
@@ -151,9 +168,11 @@ from
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
 ;
+create nonclustered index temp_ppcsites_easy on #ppcsites ( ppcsite_easy asc );
+create nonclustered index temp_ppcsites_edge on #ppcsites ( ppcsite_edge asc );
 
 -- ======================
--- ppc sites
+-- gateways
 select easy.Gateway_GK as gw_easy, edge.Gateway_GK as gw_edge
 into #gateways
 from
@@ -164,8 +183,14 @@ from
 	inner join [Edge_OLTP].dbo.User_GUI_Account AC
 		on AC.account_id = easy.Account_ID and
 		AC.[Status] != 0
-	
+;
+create nonclustered index temp_gateways_easy on #gateways ( gw_easy asc );
+create nonclustered index temp_gateways_edge on #gateways ( gw_edge asc );
+
 -- =====================================================
+-- UPDATE SEGMENTS
+-- =====================================================
+
 
 -- campaigns
 update [Edge_OLTP].dbo.UserProcess_GUI_PaidCampaign
@@ -264,6 +289,8 @@ from
 		easy.Gateway_GK = #gateways.gw_easy
 ;
 
+-- =====================================================
+-- CLEANUP
 -- =====================================================
 
 drop table #campaigns;
