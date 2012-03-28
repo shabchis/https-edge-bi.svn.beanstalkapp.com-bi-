@@ -11,7 +11,7 @@
 <DTS:Property DTS:Name="VersionMajor">1</DTS:Property>
 <DTS:Property DTS:Name="VersionMinor">0</DTS:Property>
 <DTS:Property DTS:Name="VersionBuild">137</DTS:Property>
-<DTS:Property DTS:Name="VersionGUID">{960E1EF8-CB79-4AC2-89FC-AD2C9A9A53AF}</DTS:Property>
+<DTS:Property DTS:Name="VersionGUID">{54A23254-0A67-4568-928B-530272B52721}</DTS:Property>
 <DTS:Property DTS:Name="EnableConfig">-1</DTS:Property>
 <DTS:Property DTS:Name="CheckpointFileName"></DTS:Property>
 <DTS:Property DTS:Name="SaveCheckpoints">0</DTS:Property>
@@ -23,7 +23,7 @@
 <DTS:Property DTS:Name="DTSID">{DD74250D-5020-4F46-8A46-F472765999FA}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">OLEDB</DTS:Property><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAdHbEdRUit0uPHkFvdSs7ewAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAADoMe6DAhdJ5PA5ivWWFRktAAAAAASAAACgAAAAEAAAANU/2eW/Ky7LnP7UOrbZ/uYIAAAA1JGT2eOTvW4UAAAAbd01KZVpTTLWoXAzLsvnnpIJbos</DTS:Password>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0Il93PamLEyiDGq1JmF5pwAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAADIwKiixDXDosh/uOMx2E7bAAAAAASAAACgAAAAEAAAAATpFXFGAYY1GCde1FnVudMIAAAA9IhI4cro49EUAAAAAzusZisnaeZ5hDPLVbZhJLN28wY</DTS:Password>
 <DTS:Property DTS:Name="ConnectionString">Data Source=localhost;User ID=;Initial Catalog=Edge_Admin;Provider=SQLNCLI10.1;Integrated Security=SSPI;Application Name=SSIS-Pkg_3000_Process_BOPPC_Cubes-{D4C8EEAF-EE41-4CB2-BB37-A15913D1C362}localhost.Edge_Admin;Auto Translate=False;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:ConnectionManager>
 <DTS:Property DTS:Name="DelayValidation">0</DTS:Property>
@@ -31,7 +31,7 @@
 <DTS:Property DTS:Name="DTSID">{CA33AA56-3F2F-433C-9F51-480AAD249832}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">MSOLAP100</DTS:Property><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAdHbEdRUit0uPHkFvdSs7ewAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAAC8NtOiAqzH10txaiDFq+rcAAAAAASAAACgAAAAEAAAAHYR6++5yW1VLVMvsBLPi3kIAAAANNfjwasxEV4UAAAAI82XanzOmmrMriJLkonOdR0mRIk</DTS:Password>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0Il93PamLEyiDGq1JmF5pwAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAACkElhQndaCo3KJdgbf6/wKAAAAAASAAACgAAAAEAAAAB9BMg1mOQkkw1xnjgy2EH0IAAAAxT1MBGYoF3YUAAAAer/IF5G4txJS7RzNSTc4EO6Kev4</DTS:Password>
 <DTS:Property DTS:Name="ConnectionString">Data Source=localhost;User ID=;Initial Catalog=Edge_UDM;Provider=MSOLAP.4;Integrated Security=SSPI;Impersonation Level=Impersonate;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:Configuration>
 <DTS:Property DTS:Name="ConfigurationType">1</DTS:Property>
@@ -211,11 +211,11 @@
 <DTS:Property DTS:Name="LoggingMode">0</DTS:Property>
 <DTS:Property DTS:Name="FilterKind">0</DTS:Property>
 <DTS:Property DTS:Name="EventFilter" DTS:DataType="8"></DTS:Property></DTS:LoggingOptions>
-<DTS:Property DTS:Name="ObjectName">Analysis Services BOTemplate</DTS:Property>
+<DTS:Property DTS:Name="ObjectName">BOOptionRally1</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{AE9AC3B2-3233-4720-A3AA-611354208ECD}</DTS:Property>
 <DTS:Property DTS:Name="Description">Analysis Services Processing Task</DTS:Property>
 <DTS:Property DTS:Name="CreationName">Microsoft.DataTransformationServices.Tasks.DTSProcessingTask.DTSProcessingTask, Microsoft.SqlServer.ASTasks, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</DTS:Property>
-<DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property><DTS:ObjectData><ASProcessingData ConnectionName="localhost" ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;Edge_UDM&lt;/DatabaseID&gt;&#xA;      &lt;CubeID&gt;BOTemplate2&lt;/CubeID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;&lt;/Batch&gt;"/></DTS:ObjectData></DTS:Executable>
+<DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property><DTS:ObjectData><ASProcessingData ConnectionName="localhost" ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;Object&gt;&lt;DatabaseID&gt;Edge_UDM&lt;/DatabaseID&gt;&lt;CubeID&gt;BOOptionRally1&lt;/CubeID&gt;&lt;/Object&gt;&lt;Type&gt;ProcessFull&lt;/Type&gt;&lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&lt;/Process&gt;&lt;/Batch&gt;"/></DTS:ObjectData></DTS:Executable>
 <DTS:PrecedenceConstraint>
 <DTS:Property DTS:Name="Value">0</DTS:Property>
 <DTS:Property DTS:Name="EvalOp">2</DTS:Property>
