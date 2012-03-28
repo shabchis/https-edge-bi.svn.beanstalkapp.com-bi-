@@ -79,6 +79,16 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
+      <Name>Pkg_1003_Dwh_Dim_Client_Accounts.dtsx</Name>
+      <FullPath>Pkg_1003_Dwh_Dim_Client_Accounts.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Pkg_1004_Dwh_Dim_Getways2.dtsx</Name>
+      <FullPath>Pkg_1004_Dwh_Dim_Getways2.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
       <Name>Pkg_1005_Dwh_Dim_Campaigns.dtsx</Name>
       <FullPath>Pkg_1005_Dwh_Dim_Campaigns.dtsx</FullPath>
       <References />
@@ -86,6 +96,11 @@
     <DtsPackage FormatVersion="3">
       <Name>Pkg_1006_Dwh_Dim_PPC_Ad_Group.dtsx</Name>
       <FullPath>Pkg_1006_Dwh_Dim_PPC_Ad_Group.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Pkg_1007_Dwh_Dim_PPC_Key_Words.dtsx</Name>
+      <FullPath>Pkg_1007_Dwh_Dim_PPC_Key_Words.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
@@ -99,18 +114,13 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
+      <Name>Pkg_1010_Dwh_Dim_Creatives.dtsx</Name>
+      <FullPath>Pkg_1010_Dwh_Dim_Creatives.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
       <Name>Pkg_1014_Dwh_Dim_Key_Words.dtsx</Name>
       <FullPath>Pkg_1014_Dwh_Dim_Key_Words.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_1415_Dwh_Dim_Channels.dtsx</Name>
-      <FullPath>Pkg_1415_Dwh_Dim_Channels.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_1410_Populate_Position_Granular 1.dtsx</Name>
-      <FullPath>Pkg_1410_Populate_Position_Granular 1.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
@@ -119,43 +129,23 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_1007_Dwh_Dim_PPC_Key_Words.dtsx</Name>
-      <FullPath>Pkg_1007_Dwh_Dim_PPC_Key_Words.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
       <Name>Pkg_1020_Dwh_Dim_PPC_Sites.dtsx</Name>
       <FullPath>Pkg_1020_Dwh_Dim_PPC_Sites.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_3020_Process_Content_Olap.dtsx</Name>
-      <FullPath>Pkg_3020_Process_Content_Olap.dtsx</FullPath>
+      <Name>Pkg_1410_Populate_Position_Granular 1.dtsx</Name>
+      <FullPath>Pkg_1410_Populate_Position_Granular 1.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_1010_Dwh_Dim_Creatives.dtsx</Name>
-      <FullPath>Pkg_1010_Dwh_Dim_Creatives.dtsx</FullPath>
+      <Name>Pkg_1415_Dwh_Dim_Channels.dtsx</Name>
+      <FullPath>Pkg_1415_Dwh_Dim_Channels.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_2023_Dwh_Fact_BackOffice_Gateways.dtsx</Name>
-      <FullPath>Pkg_2023_Dwh_Fact_BackOffice_Gateways.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_1004_Dwh_Dim_Getways2.dtsx</Name>
-      <FullPath>Pkg_1004_Dwh_Dim_Getways2.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3010_Process_BO_Olap_Database.dtsx</Name>
-      <FullPath>Pkg_3010_Process_BO_Olap_Database.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_2025_Dwh_Fact_PPC_Campaigns_Targets.dtsx</Name>
-      <FullPath>Pkg_2025_Dwh_Fact_PPC_Campaigns_Targets.dtsx</FullPath>
+      <Name>Pkg_2015_Dwh_Fact_PPC_Campaigns (1).dtsx</Name>
+      <FullPath>Pkg_2015_Dwh_Fact_PPC_Campaigns.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
@@ -164,13 +154,13 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_1003_Dwh_Dim_Client_Accounts.dtsx</Name>
-      <FullPath>Pkg_1003_Dwh_Dim_Client_Accounts.dtsx</FullPath>
+      <Name>Pkg_2023_Dwh_Fact_BackOffice_Gateways.dtsx</Name>
+      <FullPath>Pkg_2023_Dwh_Fact_BackOffice_Gateways.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_3010_Process_BO_Olap_Database_FULL (1).dtsx</Name>
-      <FullPath>Pkg_3010_Process_BO_Olap_Database_FULL (1).dtsx</FullPath>
+      <Name>Pkg_2025_Dwh_Fact_PPC_Campaigns_Targets.dtsx</Name>
+      <FullPath>Pkg_2025_Dwh_Fact_PPC_Campaigns_Targets.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
@@ -179,28 +169,8 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>SendSMS.dtsx</Name>
-      <FullPath>SendSMS.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3050_Bo_only_Easyforex.dtsx</Name>
-      <FullPath>Pkg_3050_Bo_only_Easyforex.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3050_Bo_only_Conduit.dtsx</Name>
-      <FullPath>Pkg_3050_Bo_only_Conduit.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3050_Bo_only_BORadvision.dtsx</Name>
-      <FullPath>Pkg_3050_Bo_only_BORadvision.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3050_PPC_Only_PPCTemplate.dtsx</Name>
-      <FullPath>Pkg_3050_PPC_Only_PPCTemplate.dtsx</FullPath>
+      <Name>Pkg_3000_Process_2011_BOPPC_Cubes.dtsx</Name>
+      <FullPath>Pkg_3000_Process_2011_BOPPC_Cubes.dtsx</FullPath>
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
@@ -209,23 +179,8 @@
       <References />
     </DtsPackage>
     <DtsPackage FormatVersion="3">
-      <Name>Pkg_3060_BO_BOBBinary.dtsx</Name>
-      <FullPath>Pkg_3060_BO_BOBBinary.dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3060_BO_BOBBinary (1).dtsx</Name>
-      <FullPath>Pkg_3060_BO_BOBBinary (1).dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_3050_Bo_only_BOPcSpeed (1).dtsx</Name>
-      <FullPath>Pkg_3050_Bo_only_BOPcSpeed (1).dtsx</FullPath>
-      <References />
-    </DtsPackage>
-    <DtsPackage FormatVersion="3">
-      <Name>Pkg_2015_Dwh_Fact_PPC_Campaigns (1).dtsx</Name>
-      <FullPath>Pkg_2015_Dwh_Fact_PPC_Campaigns.dtsx</FullPath>
+      <Name>Pkg_3020_Process_Content_Olap.dtsx</Name>
+      <FullPath>Pkg_3020_Process_Content_Olap.dtsx</FullPath>
       <References />
     </DtsPackage>
   </DTSPackages>
