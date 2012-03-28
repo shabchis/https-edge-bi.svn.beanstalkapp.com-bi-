@@ -11,7 +11,7 @@
 <DTS:Property DTS:Name="VersionMajor">1</DTS:Property>
 <DTS:Property DTS:Name="VersionMinor">0</DTS:Property>
 <DTS:Property DTS:Name="VersionBuild">14</DTS:Property>
-<DTS:Property DTS:Name="VersionGUID">{23FF57E5-124F-432C-803F-27DC3C8E1351}</DTS:Property>
+<DTS:Property DTS:Name="VersionGUID">{8868F4D3-4F6D-410C-8C4F-0DF88DCAC5CD}</DTS:Property>
 <DTS:Property DTS:Name="EnableConfig">-1</DTS:Property>
 <DTS:Property DTS:Name="CheckpointFileName"></DTS:Property>
 <DTS:Property DTS:Name="SaveCheckpoints">0</DTS:Property>
@@ -23,16 +23,16 @@
 <DTS:Property DTS:Name="DTSID">{43F8D85E-9F46-4EAA-9F1E-2A9D683BDD41}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">OLEDB</DTS:Property><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property>
-<DTS:Property DTS:Name="ConnectionString">Data Source=.;Initial Catalog=Edge_Admin;Provider=SQLNCLI10.1;Integrated Security=SSPI;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2M8Sogp4CUWqh0MC1XKe4QAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAABLgGiOeI4oiOWrG+syWpJOAAAAAASAAACgAAAAEAAAAJxV/e1N68+n9NZeuSkQAiAIAAAA7pxsI9YdUHgUAAAAIZwwjJk4j+t2vJpxKkECK7SBjNI</DTS:Password>
+<DTS:Property DTS:Name="ConnectionString">Data Source=.;User ID=;Initial Catalog=Edge_Admin;Provider=SQLNCLI10.1;Integrated Security=SSPI;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:ConnectionManager>
 <DTS:Property DTS:Name="DelayValidation">0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">DWH</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{8B3D3A6F-719D-4A6A-95D1-270CED04C689}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">OLEDB</DTS:Property><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property>
-<DTS:Property DTS:Name="ConnectionString">Data Source=.;Initial Catalog=Edge_DWH;Provider=SQLNCLI10.1;Integrated Security=SSPI;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2M8Sogp4CUWqh0MC1XKe4QAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAAAdRu1G5LQkQQVX53LV84z9AAAAAASAAACgAAAAEAAAAIIG4Vr84rm76A3yICC3Cr8IAAAAeR6av/InS2QUAAAARnBeAsUPhd+ir3uTpE8DoN7gPJc</DTS:Password>
+<DTS:Property DTS:Name="ConnectionString">Data Source=.;User ID=;Initial Catalog=Edge_DWH;Provider=SQLNCLI10.1;Integrated Security=SSPI;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:ConnectionManager>
 <DTS:Property DTS:Name="DelayValidation">0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">Excel Connection Manager</DTS:Property>
@@ -47,8 +47,8 @@
 <DTS:Property DTS:Name="DTSID">{58B31E99-0601-4296-8949-F46B0CFF93C6}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">OLEDB</DTS:Property><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property>
-<DTS:Property DTS:Name="ConnectionString">Data Source=.;Initial Catalog=Edge_OLTP;Provider=SQLNCLI10.1;Integrated Security=SSPI;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2M8Sogp4CUWqh0MC1XKe4QAAAAAIAAAARABUAFMAAAADZgAAqAAAABAAAACYeHB5WwovzQ0PtwKGow2NAAAAAASAAACgAAAAEAAAAIgiaTltLyBzy9FstqH/rhQIAAAAW4c1SOwbt3MUAAAAdWPHQEPVoPPfgAL+Uv7ofn/Pk0o</DTS:Password>
+<DTS:Property DTS:Name="ConnectionString">Data Source=.;User ID=;Initial Catalog=Edge_OLTP;Provider=SQLNCLI10.1;Integrated Security=SSPI;</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:Configuration>
 <DTS:Property DTS:Name="ConfigurationType">1</DTS:Property>
 <DTS:Property DTS:Name="ConfigurationString">D:\SSIS_Projects_Edge\Config\EDGE_SSIS_Generic_Config.dtsConfig</DTS:Property>
@@ -232,7 +232,7 @@
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PrecedenceConstraint>
 <DTS:Property DTS:Name="ObjectName">Pkg_1410_Populate_Position_Granular</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{26F0818C-FC97-4DE5-B888-2413847D6C44}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{8CCB9466-6E5E-455D-B6FC-454F43B30F12}</DTS:Property>
 <DTS:Property DTS:Name="Description">410</DTS:Property>
 <DTS:Property DTS:Name="CreationName">SSIS.Package.2</DTS:Property>
 <DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property>
