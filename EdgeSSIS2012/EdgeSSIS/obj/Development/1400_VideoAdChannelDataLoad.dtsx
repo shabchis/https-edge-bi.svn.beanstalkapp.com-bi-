@@ -11,20 +11,20 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="1400_VideoAdChannelDataLoad"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{3F27FC2C-4118-4FFA-9A68-FD9D6E86CF93}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{8F5170AE-E797-4623-9274-366F46B66ED4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DWH rollback SP - All deliveries"
+      DTS:refId="Package\DWH rollback SP"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{E2CF1852-90BA-44F4-9097-6102F9078D7D}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DWH rollback SP - All deliveries"
+      DTS:ObjectName="DWH rollback SP"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -32,7 +32,28 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C3CCC5BE-8700-4C08-9066-517E54322C78}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="EXEC  [SP_RollBack_DWH]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="SP_RollBack_DWH ?,?,?"
+          SQLTask:CodePage="1255"
+          SQLTask:TypeConversionMode="None" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@CommitTableName"
+            SQLTask:DtsVariableName="$Project::CommitTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="4000" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Signature"
+            SQLTask:DtsVariableName="$Project::Signature"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="4000" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@DeliveryID"
+            SQLTask:DtsVariableName="$Project::Signature"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="4000" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1284,7 +1305,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{0A2C68C0-A624-45D8-BD56-0A728151C69C}"
-      DTS:From="Package\DWH rollback SP - All deliveries"
+      DTS:From="Package\DWH rollback SP"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Transfer data from staging to DWH" />
@@ -1303,7 +1324,7 @@
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="228,42"
-          Id="Package\DWH rollback SP - All deliveries"
+          Id="Package\DWH rollback SP"
           TopLeft="258.944444444444,132.166666666667" />
         <NodeLayout
           Size="246,42"
@@ -1338,7 +1359,7 @@
     design-time-name="Package\Transfer data from staging to DWH">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="125,49"
           Id="Package\Transfer data from staging to DWH\Staging"
@@ -1366,7 +1387,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

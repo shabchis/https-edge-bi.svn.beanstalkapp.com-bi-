@@ -11,20 +11,20 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="1300_SocialChannelDataLoad"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{0EF26F20-FAD0-418D-8467-9BC50FFEE86F}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{81FBDA7A-9915-4774-8D59-F9417AFF6C7F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DWH rollback SP - All deliveries"
+      DTS:refId="Package\DWH rollback SP"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{4EE09062-083C-4921-9081-4600980500A6}"
+      DTS:DTSID="{f4ebda82-6f99-4875-a0fc-8cc7bc66dea1}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DWH rollback SP - All deliveries"
+      DTS:ObjectName="DWH rollback SP"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -32,7 +32,28 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C3CCC5BE-8700-4C08-9066-517E54322C78}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="EXEC  [SP_RollBack_DWH]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="SP_RollBack_DWH ?,?,?"
+          SQLTask:CodePage="1255"
+          SQLTask:TypeConversionMode="None" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@CommitTableName"
+            SQLTask:DtsVariableName="$Project::CommitTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="4000" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Signature"
+            SQLTask:DtsVariableName="$Project::Signature"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="4000" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@DeliveryID"
+            SQLTask:DtsVariableName="$Project::Signature"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="4000" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1701,8 +1722,8 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{DB4A8D95-7A50-4451-B639-863EA037FC22}"
-      DTS:From="Package\DWH rollback SP - All deliveries"
+      DTS:DTSID="{EBF1F1EA-10F1-4E64-9322-3E08771AA81B}"
+      DTS:From="Package\DWH rollback SP"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Transfer data from staging to DWH" />
@@ -1720,27 +1741,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="228,42"
-          Id="Package\DWH rollback SP - All deliveries"
-          TopLeft="258.944444444444,132.166666666667" />
-        <NodeLayout
           Size="246,42"
           Id="Package\Transfer data from staging to DWH"
           TopLeft="249.944444444445,234.166666666667" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\DWH rollback SP"
+          TopLeft="269.944444444445,123.166666666667" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="372.944444444444,174.166666666667">
+          TopLeft="383.944444444445,165.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-11,69"
               Start="0,0"
-              End="0,52.5">
+              End="-11,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="-4,34.5" />
+                  <mssgle:LineSegment
+                    End="-7,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7,34.5"
+                    Point2="-11,34.5"
+                    Point3="-11,38.5" />
+                  <mssgle:LineSegment
+                    End="-11,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
