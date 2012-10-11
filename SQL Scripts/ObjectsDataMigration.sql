@@ -101,4 +101,37 @@
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] AGCR 
 	Where AGCR.Account_ID = 10035 and creativeVisUrl = 'OptionRally.com' --> 18390 Rows
 
-	--Create campaigns table as EdgeObject
+	--Create campaigns table as EdgeObject without property
+	set IDENTITY_INSERT [dbo].[EdgeObject] on 
+	INSERT INTO [dbo].[EdgeObject]
+           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[Name] ,[Status] ,[int_Field1] ,[string_Field1])
+	Select  [Campaign_GK]  ,'Campaign',[Account_ID] ,[Channel_ID] ,[campaignid] , NULL, [campStatus], [ScheduleEnabled], [campaign]
+	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidCampaign]
+	set IDENTITY_INSERT [dbo].[EdgeObject]  off
+
+	INSERT INTO [dbo].[ObjectTracking] 
+	           ([AccountID]  ,[ChannelID] ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
+     Select [Account_ID], [Channel_ID], 'EdgeObject', [Campaign_GK] , 'Migration'
+	 From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidCampaign] 
+
+	 --Create adgroups table as EdgeObject without property
+	set IDENTITY_INSERT [dbo].[EdgeObject] on 
+
+	INSERT INTO [dbo].[EdgeObject]
+           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[Name] ,[Status] ,[string_Field1])
+	Select  [Adgroup_GK]  ,'Segment',[Account_ID] ,[Channel_ID] ,[adgroupID] , 'Adgroup', [agStatus], [adgroup] 
+   FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdGroup]
+
+	set IDENTITY_INSERT [dbo].[EdgeObject]  off
+
+	INSERT INTO [dbo].[ObjectTracking] 
+	           ([AccountID]  ,[ChannelID] ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
+     Select [Account_ID], [Channel_ID], 'EdgeObject', [Adgroup_GK] , 'Migration' 
+	 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdGroup]
+
+	--Create trackers as EdgeObject without property
+
+
+
+
+
