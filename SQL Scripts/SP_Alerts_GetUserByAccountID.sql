@@ -26,7 +26,7 @@ From  (
 				on UGU.UserID = U.UserID
 		  where AccountID = @AccountID
 			and TargetIsGroup = 1
-			and PermissionType = 'RecieveAlerts'
+			and PermissionType = 'RecieveDuplicateAlerts'
 
 		UNION ALL
 
@@ -37,7 +37,7 @@ From  (
 				on AP.TargetID = U.UserID
 			  where AccountID = @AccountID
 			and TargetIsGroup = 0
-			and PermissionType = 'RecieveAlerts'
+			and PermissionType = 'RecieveDuplicateAlerts'
 		)	 A
 		
 		set @UsersEmails = Left(@UsersEmails, LEN(@UsersEmails)-1) ;
