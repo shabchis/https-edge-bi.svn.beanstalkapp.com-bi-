@@ -113,14 +113,17 @@
      Select [Account_ID], [Channel_ID], 'EdgeObject', [Campaign_GK] , 'Migration'
 	 From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidCampaign] 
 
+	
 -- ***************************************************************************************************************
 	 --Create adgroups table as EdgeObject without property
 	set IDENTITY_INSERT [dbo].[EdgeObject] on 
 
 	INSERT INTO [dbo].[EdgeObject]
-           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[Name] ,[Status] ,[string_Field1])
-	Select  [Adgroup_GK]  ,'Segment',[Account_ID] ,[Channel_ID] ,[adgroupID] , 'Adgroup', [agStatus], [adgroup] 
-   FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdGroup]
+           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[int_Field1] ,[Status] ,[string_Field1])
+	Select  [Adgroup_GK]  ,'Segment',[Account_ID] ,[Channel_ID] ,[adgroupID] , MP.ID, [agStatus], [adgroup] 
+    From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdGroup] AG inner join [dbo].[MetaProperty] MP
+		on AG.Channel_ID = MP.ChannelID and AG.Account_ID = MP.AccountID
+	Where MP.Name = 'Adgroup'
 
 	set IDENTITY_INSERT [dbo].[EdgeObject]  off
 
@@ -131,26 +134,33 @@
 
 	 -- Create meta property for adgroup
 	 INSERT INTO [dbo].[MetaProperty] ([Name] ,[AccountID] ,[ChannelID] ,[BaseValueType])
-								select distinct 'Adgroup', [Account_ID], [Channel_ID],'Segment'
+								select distinct 'Adgroup', [Account_ID], [Channel_ID], 'Segment'
 								 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdGroup]
 	
 	-- Associate meta value to each adgroup		
-	 INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[ActualValueType] ,[Value] ,[ValueGK])					
-								 Select  MP.BaseValueType , Adgroup_gk , MP.ID, 'Campaign', NULL, Campaign_GK 
+	 INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[Value] ,[ValueGK])					
+								 Select 'Segment', Adgroup_gk , MP.ID, NULL, Campaign_GK 
 								 From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdGroup] AG
 									inner join [dbo].[MetaProperty] MP
-										on AG.Account_ID = MP.AccountID and AG.Channel_ID = MP.ChannelID
-								 Where MP.BaseValueType = 'Segment' and MP.Name = 'Adgroup'
+										on (AG.Account_ID = MP.AccountID OR MP.AccountID = -1) and (AG.Channel_ID = MP.ChannelID OR MP.ChannelID = -1)
+								 Where  MP.Name = 'Campaign'
 
 -- ***************************************************************************************************************
+	 -- Create meta property for tracker
+	 INSERT INTO [dbo].[MetaProperty] ([Name] ,[AccountID] ,[ChannelID] ,[BaseValueType])
+								select distinct 'Tracker', [Account_ID], [Channel_ID],'Segment'
+								 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Gateway]
+	
 	 --Create trackers as EdgeObject 
 	set IDENTITY_INSERT [dbo].[EdgeObject] on 
 
 	INSERT INTO [dbo].[EdgeObject]
-           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[Name] ,[string_Field1])
-	Select  [Gateway_GK]  ,'Segment',[Account_ID] ,[Channel_ID] ,[Gateway_id] , 'Tracker', [Gateway_id]
-   FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Gateway]
-
+           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[int_field1],[string_Field1])
+	Select  [Gateway_GK]  ,'Segment',[Account_ID] ,[Channel_ID] ,[Gateway_id] , MP.ID, [Gateway_id]
+	FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Gateway] GTW inner join [dbo].[MetaProperty] MP
+		on GTW.Channel_ID = MP.ChannelID and GTW.Account_ID = MP.AccountID
+	Where MP.Name = 'Tracker'
+	
 	set IDENTITY_INSERT [dbo].[EdgeObject]  off
 
 	INSERT INTO [dbo].[ObjectTracking] 
@@ -158,19 +168,14 @@
      Select [Account_ID], [Channel_ID], 'EdgeObject', [Gateway_GK] , 'Migration' 
 	 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Gateway]
 
-	 -- Create meta property for tracker
-	 INSERT INTO [dbo].[MetaProperty] ([Name] ,[AccountID] ,[ChannelID] ,[BaseValueType])
-								select distinct 'Tracker', [Account_ID], [Channel_ID],'Segment'
-								 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Gateway]
-	
-	-- Associate meta value to each tracker		
-	 INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[ActualValueType] ,[Value] ,[ValueGK])					
-								 Select  EO.ObjectType , EO.GK , MP.ID, EO.ObjectType, NULL, EO.GK 
-								 From [dbo].[EdgeObject] EO
-									inner join [dbo].[MetaProperty] MP
-										on EO.AccountID = MP.AccountID and EO.ChannelID = MP.ChannelID
-											and EO.Name = MP.Name and EO.ObjectType = MP.BaseValueType
-								 Where EO.ObjectType = 'Segment' and EO.Name = 'Tracker'
+		
+	 --INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[Value] ,[ValueGK])					
+		--						 Select  EO.ObjectType , EO.GK , MP.ID, EO.ObjectType, NULL, EO.GK 
+		--						 From [dbo].[EdgeObject] EO
+		--							inner join [dbo].[MetaProperty] MP
+		--								on EO.AccountID = MP.AccountID and EO.ChannelID = MP.ChannelID
+		--									and EO.Name = MP.Name and EO.ObjectType = MP.BaseValueType
+		--						 Where EO.ObjectType = 'Segment' and EO.Name = 'Tracker'
 
 -- ***************************************************************************************************************
 
