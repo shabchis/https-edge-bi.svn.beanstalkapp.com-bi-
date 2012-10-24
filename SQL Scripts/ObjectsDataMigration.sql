@@ -19,7 +19,7 @@
 -- Create Channel table
 	INSERT INTO [dbo].[Channel]
            ([ID], [Name] ,[ChannelType])
-	Select Channel_id, Display_Name,2
+	Select Channel_id, Display_Name, 2
 	From EDGE_OLTP_OLD.dbo.Constant_Channel 
 
 -- Create Ad table (note creativeGK is the same as Ad gk in the migrated data)
@@ -28,6 +28,35 @@
 	Select	 [PPC_Creative_GK] , Headline, [creativeid], [Account_ID], [Channel_ID], [creativeStatus], [creativeDestUrl], [PPC_Creative_GK]
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative]
 	Where Account_ID = 10035
+
+-- **** Ad Relations ****
+-- Relate ad to campaign	
+	INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[Value] ,[ValueGK])					
+			Select 'Ad', PPC_Creative_GK , MP.ID, NULL, Campaign_GK 
+			From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] CR
+			inner join [dbo].[MetaProperty] MP
+				on (CR.Account_ID = MP.AccountID OR MP.AccountID = -1) and (CR.Channel_ID = MP.ChannelID OR MP.ChannelID = -1)
+			Where  MP.Name = 'Campaign' and cr.Account_ID = 10035
+
+-- Relate ad to adgroup	
+	INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[Value] ,[ValueGK])					
+			Select 'Ad', PPC_Creative_GK , MP.ID, NULL, AdGroup_GK 
+			From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] CR
+			inner join [dbo].[MetaProperty] MP
+				on (CR.Account_ID = MP.AccountID ) and (CR.Channel_ID = MP.ChannelID )
+			Where  MP.Name = 'Adgroup' and cr.Account_ID = 10035
+			
+-- Relate ad to tracker	
+	INSERT INTO [dbo].[MetaValue] ([ObjectType] ,[ObjectGK] ,[PropertyID] ,[Value] ,[ValueGK])					
+			Select distinct 'Ad' [ObjectType] , PPC_Creative_GK [ObjectGK], MP.ID [PropertyID],  NULL [Value], gtw.gateway_gk [ValueGK] 
+			from [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] PCR
+				inner join [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Gateway] GTW
+				on substring(creativeDestUrl,charindex('&p=edgetrackerid_',creativeDestUrl) + 17,99) = gtw.Gateway_id collate SQL_Latin1_General_CP1_CI_AS
+				and  (PCR.Account_ID = GTW.Account_ID ) and (PCR.Channel_ID = GTW.Channel_ID )
+			inner join [dbo].[MetaProperty] MP
+				on (PCR.Account_ID = MP.AccountID ) and (PCR.Channel_ID = MP.ChannelID )
+			Where  MP.Name = 'Tracker' and pcr.Account_ID = 10035
+			and PPC_Creative_GK <> 700402599 -- the double tracker
 
 -- Create title creative
 	INSERT INTO [dbo].[Creative] 
@@ -177,9 +206,73 @@
 		--									and EO.Name = MP.Name and EO.ObjectType = MP.BaseValueType
 		--						 Where EO.ObjectType = 'Segment' and EO.Name = 'Tracker'
 
+ -- Create meta property for Target Keyword
+	 INSERT INTO [dbo].[MetaProperty] ([Name] ,[AccountID] ,[ChannelID] ,[BaseValueType])
+								select distinct 'TargetKeyword', [Account_ID], NULL,'Target'
+								 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Keyword]
+	
+	set IDENTITY_INSERT [dbo].[Target]  on
+
+	INSERT INTO [dbo].[Target]
+				   (GK, [ObjectType] ,[AccountID] ,[Name] ,[int_Field1] /*PropertyID*/ ,[string_Field1])
+		Select Keyword_GK , 'Target', Account_ID, NULL, 9 /*PropertyID*/ , Keyword
+		From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Keyword]
+
+	set IDENTITY_INSERT [dbo].[Target]  off
+		
+	INSERT INTO [dbo].[ObjectTracking] 
+	           ([AccountID]  ,[ChannelID] ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
+     Select [Account_ID], NULL, 'Target', [Keyword_GK] , 'Migration' 
+	 FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Keyword]
+
+
+-- No Content data for 10035
+
+ -- Create meta property for Target definition - ppc Keyword
+	 INSERT INTO [dbo].[MetaProperty] ([Name] ,[AccountID] ,[ChannelID] ,[BaseValueType])
+								select distinct 'PPCKeyword', [Account_ID], -1,'TargetDefinition'
+								 FROM [EDGE_OLTP_OLD].[dbo].UserProcess_GUI_PaidAdgroupKeyword
+	
+	
+	INSERT INTO [dbo].[AdTargetDefinition]
+				(GK, ADgk, TargetGK, [ObjectType] ,[AccountID] ,[Name] ,[DestinationUrl], [int_Field1] /*PropertyID*/, [int_Field2] )
+	Select distinct kw.PPC_Keyword_GK , fact.ppc_creative_gk , kw.Keyword_GK, 'TargetDefinition', kw.Account_ID, NULL, kw.kwDestUrl ,10 /*PropertyID*/ , kw.MatchType 
+	From [EDGE_OLTP_OLD].[dbo].UserProcess_GUI_PaidAdgroupKeyword kw
+		inner join [EDGE_OLTP_OLD].[dbo].[Paid_API_AllColumns_v29] fact
+			on fact.Account_ID = kw.Account_ID and fact.PPC_Keyword_GK = kw.PPC_Keyword_GK 
+				
+-- Did not run cause of the PK includes 2 fields (adGK + GK)
+
+-- INSERT INTO [dbo].[ObjectTracking] 
+--           ([AccountID]  ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
+--    Select [AccountID], 'ADTargetDefinition', [GK] , 'Migration' 
+-- From [AdTargetDefinition]
+
+
+ -- Create meta property for Target match - ppc Keyword
+	 INSERT INTO [dbo].[MetaProperty] ([Name] ,[AccountID] ,[ChannelID] ,[BaseValueType])
+								select distinct 'PPCKeyword', [Account_ID], -1,'TargetMatch'
+								 FROM [EDGE_OLTP_OLD].[dbo].UserProcess_GUI_PaidAdgroupKeyword
+	
+	
+	INSERT INTO [dbo].[AdTargetMatch]
+				(GK, ADgk, TargetGK, [AdTargetDefinitionGK], [ObjectType] ,[AccountID] ,[Name] ,[DestinationUrl], [int_Field1] /*PropertyID*/)
+	Select distinct kw.PPC_Keyword_GK , fact.ppc_creative_gk , kw.Keyword_GK,  kw.PPC_Keyword_GK ,'TargetMatch', kw.Account_ID, NULL, fact.destUrl ,11 /*PropertyID*/
+	From [EDGE_OLTP_OLD].[dbo].UserProcess_GUI_PaidAdgroupKeyword kw
+		inner join [EDGE_OLTP_OLD].[dbo].[Paid_API_AllColumns_v29] fact
+			on fact.Account_ID = kw.Account_ID and fact.PPC_Keyword_GK = kw.PPC_Keyword_GK 
+				
+-- Did not run cause of the PK includes 2 fields (adGK + GK)
+
+-- INSERT INTO [dbo].[ObjectTracking] 
+--           ([AccountID]  ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
+--    Select [AccountID], 'ADTargetDefinition', [GK] , 'Migration' 
+-- From [AdTargetDefinition]
+
+
 -- ***************************************************************************************************************
 
-
+				
 
 
 
