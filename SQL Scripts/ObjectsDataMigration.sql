@@ -494,30 +494,40 @@
 
 -- ************* Measures and Goals ******************************************
 
-	--set IDENTITY_INSERT [dbo].[Measure] on
-	--INSERT INTO [dbo].[Measure]
-	--           ([ID], [Name] ,[MeasureDataType] ,[ChannelID] ,[AccountID] ,[DisplayName] ,[StringFormat] 
-	--			,[InheritedByDefault] ,[OptionsOverride] ,[Options])
-	--SELECT [MeasureID], [Name] , 1, [ChannelID], [AccountID] , [DisplayName], [StringFormat]
-	--			,NULL , NULL, case when [IntegrityCheckRequired] = 1 then 128 end  
-	--  FROM [EDGE_OLTP_OLD].[dbo].[Measure]
+	set IDENTITY_INSERT [dbo].[Measure] on
+	INSERT INTO [dbo].[Measure]
+	           ([ID], [Name] ,[MeasureDataType] ,[ChannelID] ,[AccountID] ,[DisplayName] ,[StringFormat] 
+				,[InheritedByDefault] ,[OptionsOverride] ,[Options])
+	SELECT M.[MeasureID], M.[Name] , 1 , BM.[ChannelID], M.[AccountID] , M.[DisplayName], BM.[StringFormat]
+				,NULL , NULL, case when BM.[IntegrityCheckRequired] = 1 then 128 end  
+	  FROM [EDGE_OLTP_OLD].[dbo].[Measure] M inner join [EDGE_OLTP_OLD].[dbo].[Measure] BM
+		on BM.MeasureID = M.BaseMeasureID
+	  where M.AccountID != -1 and M.BaseMeasureID is not null and BM.IsBO = 1
 
-	--  set IDENTITY_INSERT [dbo].[Measure] off
+	  set IDENTITY_INSERT [dbo].[Measure] off
 
---	INSERT INTO [dbo].[Goal]
---           ([ObjectType] ,[ObjectGK] ,[DateStart] ,[DateEnd] ,[MeasureID] ,[Value])
---		   -- 'Campaign', Campaign_gk , 01-01-1900, 01-01-1900, To fill, value
 
---SELECT  [AccountID]
---      ,[CampaignGK]
---      ,[AdgroupGK]
---      ,[SegmentID]
---      ,[Cost]
---      ,[CPA_new_users]
---      ,[CPA_new_activations]
---      ,[Conv]
---      ,[Activations]
---      ,[signups]
---      ,[New_Users]
---  FROM [EDGE_OLTP_OLD].[dbo].[User_GUI_CampaignTargets]
+	INSERT INTO [dbo].[Goal]
+           ([ObjectType] ,AccountID, ChannelID, [ObjectGK] ,[DateStart] ,[DateEnd] ,[MeasureID] ,[Value])
+		   SELECT 'Campaign', AccountID, -1, Campaigngk , '1900-01-01 00:00:00','1900-01-01 00:00:00' ,212, [CPA_new_users]
+		   FROM [EDGE_OLTP_OLD].[dbo].[User_GUI_CampaignTargets]
+		   WHERE [CPA_new_activations] is null
 
+	INSERT INTO [dbo].[Goal]
+           ([ObjectType] ,AccountID, ChannelID, [ObjectGK] ,[DateStart] ,[DateEnd] ,[MeasureID] ,[Value])
+		   SELECT 'Campaign', AccountID, -1, Campaigngk , '1900-01-01 00:00:00','1900-01-01 00:00:00' ,213, [CPA_new_activations]
+		   FROM [EDGE_OLTP_OLD].[dbo].[User_GUI_CampaignTargets]
+		   WHERE [CPA_new_activations] is not null
+
+INSERT INTO  [dbo].[Goal]
+           ([ObjectType] ,AccountID, ChannelID, [ObjectGK] ,[DateStart] ,[DateEnd] ,[MeasureID] ,[Value])
+			SELECT distinct 'Campaign', AccountID, -1, gk , '1900-01-01 00:00:00','1900-01-01 00:00:00' ,212, 100
+			FROM [EdgeObjects].[dbo].[EdgeObject]
+			where objecttype = 'campaign' and accountID = 10035 
+
+INSERT INTO  [dbo].[Goal]
+           ([ObjectType] ,AccountID, ChannelID, [ObjectGK] ,[DateStart] ,[DateEnd] ,[MeasureID] ,[Value])
+			SELECT distinct 'Campaign', AccountID, -1, gk , '1900-01-01 00:00:00','1900-01-01 00:00:00' ,213, 500
+			FROM [EdgeObjects].[dbo].[EdgeObject]
+			where objecttype = 'campaign' and accountID = 10035 -- and gk !=  100004755
+		 
