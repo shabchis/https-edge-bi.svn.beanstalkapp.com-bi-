@@ -1,0 +1,98 @@
+with
+member [Measures].[Main] as
+iif(  
+	([Measures].[ParentCost]   <  [Measures].[MemberCost])
+OR  ([Measures].[ParentImps]   <  [Measures].[MemberImps])
+OR (MemberConv > 0)
+,
+1 ,0),
+-- OR [Getways Dim].[Gateways].CurrentMember is [Getways Dim].[Gateways].[All Gateways],
+--Sum(([Getways Dim].[Gateways].CurrentMember.Children),[Measures].[Actual EV])/sum(([Getways Dim].[Gateways].CurrentMember.Children),
+--[Measures].[Bo New Users])
+--,iif(ISEMPTY([Measures].[Bo New Users]) Or [Measures].[Bo New Users] = 0,Null,[Measures].[Target CPA]) ),
+FORMAT_STRING = "#,#", 
+VISIBLE = 1 
+
+member  [Measures].[ParentCost] as  
+	IIF(IsEmpty(Sum([Getways Dim].[Gateways].Parent,[Measures].[Cost])),NULL,Sum([Getways Dim].[Gateways].Parent,[Measures].[Cost])* 0.001)
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 1
+
+member  [Measures].[MemberCost] as  
+	IIF(IsEmpty(Sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Cost])),NULL,Sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Cost]))
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 1
+
+member  [Measures].[ParentImps] as  
+	IIF(IsEmpty(Sum([Getways Dim].[Gateways].Parent,[Measures].[Impressions])),NULL,Sum([Getways Dim].[Gateways].Parent,[Measures].[Impressions])* 0.0005)
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 1
+
+member  [Measures].[MemberImps] as  
+	IIF(IsEmpty(Sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Impressions])),NULL,Sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Impressions]))
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 1
+
+member  [Measures].[MemberConv] as  
+	IIF(IsEmpty(Sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Conversions])),NULL,Sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Conversions]))
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 1	
+	
+select {[Measures].[Cost],[Measures].[Main], [Measures].[ParentCost], [Measures].[MemberCost], 
+			[Measures].[MemberConv], [Measures].[ParentImps], [Measures].[MemberImps]} on 0,
+          [Getways Dim].[Gateways].[Campaign].members on 1
+from BOBbinary
+where ([Getways Dim].[Account].&[1006],[Time Dim].[Time Dim].[Month].&[201210])
+-- sum([Getways Dim].[Gateways].CurrentMember,[Measures].[Target CPA ])
+
+
+with
+member [Measures].[HLMain] as
+iif(  
+	([Measures].[HLParentCost]   <  [Measures].[HLMemberCost])
+OR  ([Measures].[HLParentImps]   <  [Measures].[HLMemberImps])
+OR (HLMemberConv > 0), 1 ,NULL),
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  
+
+member  [Measures].[HLCostPercent] as  
+	0.01
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0
+		
+member  [Measures].[HLImpsPercent] as  
+	0.01
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0
+	
+member  [Measures].[HLParentCost] as  
+	IIF(IsEmpty(Sum([Content Domains flat].[Content Domains Flat].CurrentMember.Parent,[Measures].[Content Cost])),NULL,Sum([Content Domains flat].[Content Domains Flat].CurrentMember.Parent,[Measures].[Content Cost])* [Measures].[HLCostPercent])
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0
+
+member  [Measures].[HLMemberCost] as  
+	IIF(IsEmpty(Sum([Content Domains flat].[Content Domains Flat].CurrentMember,[Measures].[Content Cost])),NULL,Sum([Content Domains flat].[Content Domains Flat].CurrentMember,[Measures].[Content Cost]))
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0
+
+member  [Measures].[HLParentImps] as  
+	IIF(IsEmpty(Sum([Content Domains flat].[Content Domains Flat].CurrentMember.Parent,[Measures].[Content Impressions])),NULL,Sum([Content Domains flat].[Content Domains Flat].CurrentMember.Parent,[Measures].[Content Impressions])* [Measures].[HLImpsPercent])
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0
+
+member  [Measures].[HLMemberImps] as  
+	IIF(IsEmpty(Sum([Content Domains flat].[Content Domains Flat].CurrentMember,[Measures].[Content Impressions])),NULL,Sum([Content Domains flat].[Content Domains Flat].CurrentMember,[Measures].[Content Impressions]))
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0
+
+member  [Measures].[HLMemberConv] as  
+	IIF(IsEmpty(Sum([Content Domains flat].[Content Domains Flat].CurrentMember,[Measures].[Content Conversions])),NULL,Sum([Content Domains flat].[Content Domains Flat].CurrentMember,[Measures].[Content Conversions]))
+	, FORMAT_STRING = "#,#", 
+	VISIBLE = 0	
+
+select {[Measures].[Content Cost],[Measures].[HLMain], [Measures].[HLParentCost], [Measures].[HLMemberCost], 
+			[Measures].[HLMemberConv], [Measures].[HLParentImps], [Measures].[HLMemberImps]} on 0,
+         NonEmpty([Content Domains flat].[Content Domains Flat].members) on 1
+from ContentBbinary
+where ([Time Dim].[Time Dim].[Month].&[201210])
+
