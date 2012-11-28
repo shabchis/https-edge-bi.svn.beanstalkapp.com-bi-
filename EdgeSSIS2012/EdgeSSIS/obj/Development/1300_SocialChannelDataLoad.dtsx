@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:refId="Package"
-  DTS:CreationDate="9/5/2012 2:33:06 PM"
-  DTS:CreationName="SSIS.Package.3"
-  DTS:CreatorComputerName="AMITB-LAP"
-  DTS:CreatorName="SEPERIA\AmitB"
-  DTS:DTSID="{220AD948-A448-4F37-B90E-350324146F8D}"
+<DTS:Executable
+  DTS:refId="Package" xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ExecutableType="SSIS.Package.3"
+  DTS:CreatorName="SEPERIA\AmitB"
+  DTS:CreatorComputerName="AMITB-LAP"
+  DTS:CreationDate="9/5/2012 2:33:06 PM"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{72EE7373-6FCF-4187-9A12-F903AF46E9FD}"
   DTS:LastModifiedProductVersion="11.0.2100.60"
   DTS:LocaleID="1037"
   DTS:ObjectName="1300_SocialChannelDataLoad"
-  DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{81FBDA7A-9915-4774-8D59-F9417AFF6C7F}">
+  DTS:DTSID="{220AD948-A448-4F37-B90E-350324146F8D}"
+  DTS:CreationName="SSIS.Package.3">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DWH rollback SP"
-      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{f4ebda82-6f99-4875-a0fc-8cc7bc66dea1}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:ThreadHint="0"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:LocaleID="-1"
       DTS:ObjectName="DWH rollback SP"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:DTSID="{f4ebda82-6f99-4875-a0fc-8cc7bc66dea1}"
+      DTS:Description="Execute SQL Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -58,13 +58,13 @@
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Transfer data from staging to DWH"
-      DTS:CreationName="SSIS.Pipeline.3"
-      DTS:Description="Load from source"
-      DTS:DTSID="{34562578-D177-43BC-9B00-8086A22AEC4D}"
       DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:LocaleID="-1"
       DTS:ObjectName="Transfer data from staging to DWH"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      DTS:DTSID="{34562578-D177-43BC-9B00-8086A22AEC4D}"
+      DTS:Description="Load from source"
+      DTS:CreationName="SSIS.Pipeline.3">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
@@ -72,509 +72,509 @@
           <components>
             <component
               refId="Package\Transfer data from staging to DWH\DWH"
-              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
               name="DWH"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              description="OLE DB Destination"
               usesDispositions="true"
-              version="4">
+              version="4"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
               <properties>
                 <property
+                  name="CommandTimeout"
                   dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out.">0</property>
                 <property
+                  name="OpenRowset"
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[10035_SocialChannel]</property>
+                  description="Specifies the name of the database object used to open a rowset.">[dbo].[10035_SocialChannel]</property>
                 <property
+                  name="OpenRowsetVariable"
                   dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."></property>
                 <property
+                  name="SqlCommand"
                   dataType="System.String"
                   description="The SQL command to be executed."
-                  name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
+                  name="DefaultCodePage"
                   dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1255</property>
+                  description="Specifies the column code page to use when code page information is unavailable from the data source.">1255</property>
                 <property
+                  name="AlwaysUseDefaultCodePage"
                   dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
+                  description="Forces the use of the DefaultCodePage property value when describing character data.">false</property>
                 <property
+                  name="AccessMode"
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
-                  name="AccessMode"
                   typeConverter="AccessMode">3</property>
                 <property
+                  name="FastLoadKeepIdentity"
                   dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on.">false</property>
                 <property
+                  name="FastLoadKeepNulls"
                   dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on.">false</property>
                 <property
+                  name="FastLoadOptions"
                   dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on.">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
+                  name="FastLoadMaxInsertCommitSize"
                   dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on.">2147483647</property>
               </properties>
               <connections>
                 <connection
                   refId="Package\Transfer data from staging to DWH\DWH.Connections[OleDbConnection]"
-                  connectionManagerID="{970E15FD-AD7E-468B-9166-1C440EA95366}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BI_RND.EdgeDWH]"
+                  name="OleDbConnection"
                   description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  connectionManagerID="{970E15FD-AD7E-468B-9166-1C440EA95366}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BI_RND.EdgeDWH]" />
               </connections>
               <inputs>
                 <input
                   refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  name="OLE DB Destination Input"
                   hasSideEffects="true"
-                  name="OLE DB Destination Input">
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent">
                   <inputColumns>
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[AccountID]"
-                      cachedDataType="i8"
-                      cachedName="AccountID"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AccountID]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AccountID]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AccountID]" />
+                      cachedName="AccountID"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[ChannelID]"
-                      cachedDataType="i8"
-                      cachedName="ChannelID"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ChannelID]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[ChannelID]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ChannelID]" />
+                      cachedName="ChannelID"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[AdGK]"
-                      cachedDataType="i8"
-                      cachedName="AdGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AdGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdGK]" />
+                      cachedName="AdGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[AdgroupGK]"
-                      cachedDataType="i8"
-                      cachedName="AdgroupGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdgroupGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AdgroupGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdgroupGK]" />
+                      cachedName="AdgroupGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[CampaignGK]"
-                      cachedDataType="i8"
-                      cachedName="CampaignGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CampaignGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[CampaignGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CampaignGK]" />
+                      cachedName="CampaignGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[TargetPeriodStart]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="TargetPeriodStart"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodStart]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetPeriodStart]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodStart]" />
+                      cachedName="TargetPeriodStart"
+                      cachedDataType="dbTimeStamp" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[TargetPeriodEnd]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="TargetPeriodEnd"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodEnd]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetPeriodEnd]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodEnd]" />
+                      cachedName="TargetPeriodEnd"
+                      cachedDataType="dbTimeStamp" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[Currency]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Currency"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Currency]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Currency]" />
+                      cachedName="Currency"
+                      cachedDataType="wstr"
+                      cachedLength="10" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[OutputID]"
-                      cachedCodepage="1255"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OutputID]"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[OutputID]"
+                      cachedName="OutputID"
                       cachedDataType="str"
                       cachedLength="32"
-                      cachedName="OutputID"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[OutputID]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OutputID]" />
+                      cachedCodepage="1255" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[AveragePosition]"
-                      cachedDataType="r8"
-                      cachedName="AveragePosition"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AveragePosition]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AveragePosition]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AveragePosition]" />
+                      cachedName="AveragePosition"
+                      cachedDataType="r8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[Cost]"
-                      cachedDataType="r8"
-                      cachedName="Cost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Cost]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Cost]" />
+                      cachedName="Cost"
+                      cachedDataType="r8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[Clicks]"
-                      cachedDataType="i4"
-                      cachedName="Clicks"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Clicks]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Clicks]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Clicks]" />
+                      cachedName="Clicks"
+                      cachedDataType="i4" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[Impressions]"
-                      cachedDataType="i4"
-                      cachedName="Impressions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Impressions]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Impressions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Impressions]" />
+                      cachedName="Impressions"
+                      cachedDataType="i4" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[UniqueImpressions]"
-                      cachedDataType="i4"
-                      cachedName="UniqueImpressions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueImpressions]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[UniqueImpressions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueImpressions]" />
+                      cachedName="UniqueImpressions"
+                      cachedDataType="i4" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[UniqueClicks]"
-                      cachedDataType="i4"
-                      cachedName="UniqueClicks"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueClicks]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[UniqueClicks]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueClicks]" />
+                      cachedName="UniqueClicks"
+                      cachedDataType="i4" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[TrackerGK]"
-                      cachedDataType="i8"
-                      cachedName="TrackerGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TrackerGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TrackerGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TrackerGK]" />
+                      cachedName="TrackerGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[ImageCreativeGK]"
-                      cachedDataType="i8"
-                      cachedName="ImageCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ImageCreativeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[ImageCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ImageCreativeGK]" />
+                      cachedName="ImageCreativeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[TitleCreativeGK]"
-                      cachedDataType="i8"
-                      cachedName="TitleCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TitleCreativeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TitleCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TitleCreativeGK]" />
+                      cachedName="TitleCreativeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[BodyCreativeGK]"
-                      cachedDataType="i8"
-                      cachedName="BodyCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[BodyCreativeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[BodyCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[BodyCreativeGK]" />
+                      cachedName="BodyCreativeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[DisplayURLCreativeGK]"
-                      cachedDataType="i8"
-                      cachedName="DisplayURLCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DisplayURLCreativeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[DisplayURLCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DisplayURLCreativeGK]" />
+                      cachedName="DisplayURLCreativeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[DestinationURLCreativeGK]"
-                      cachedDataType="i8"
-                      cachedName="DestinationURLCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DestinationURLCreativeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[DestinationURLCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DestinationURLCreativeGK]" />
+                      cachedName="DestinationURLCreativeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[VideoCreativeGK]"
-                      cachedDataType="i8"
-                      cachedName="VideoCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[VideoCreativeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[VideoCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[VideoCreativeGK]" />
+                      cachedName="VideoCreativeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[ThemeGK]"
-                      cachedDataType="i8"
-                      cachedName="ThemeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ThemeGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[ThemeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ThemeGK]" />
+                      cachedName="ThemeGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[LanguageGK]"
-                      cachedDataType="i8"
-                      cachedName="LanguageGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LanguageGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[LanguageGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LanguageGK]" />
+                      cachedName="LanguageGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[CountryGK]"
-                      cachedDataType="i8"
-                      cachedName="CountryGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CountryGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[CountryGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CountryGK]" />
+                      cachedName="CountryGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[GeographicGK]"
-                      cachedDataType="i8"
-                      cachedName="GeographicGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[GeographicGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[GeographicGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[GeographicGK]" />
+                      cachedName="GeographicGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[LandingPageGK]"
-                      cachedDataType="i8"
-                      cachedName="LandingPageGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LandingPageGK]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[LandingPageGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LandingPageGK]" />
+                      cachedName="LandingPageGK"
+                      cachedDataType="i8" />
                     <inputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].Columns[OriginalCost]"
-                      cachedDataType="numeric"
-                      cachedName="OriginalCost"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OriginalCost]"
                       externalMetadataColumnId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[OriginalCost]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OriginalCost]" />
+                      cachedName="OriginalCost"
+                      cachedDataType="numeric"
+                      cachedPrecision="18"
+                      cachedScale="2" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AccountID]"
-                      dataType="i8"
-                      name="AccountID" />
+                      name="AccountID"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[ChannelID]"
-                      dataType="i8"
-                      name="ChannelID" />
+                      name="ChannelID"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AdGK]"
-                      dataType="i8"
-                      name="AdGK" />
+                      name="AdGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AdgroupGK]"
-                      dataType="i8"
-                      name="AdgroupGK" />
+                      name="AdgroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[CampaignGK]"
-                      dataType="i8"
-                      name="CampaignGK" />
+                      name="CampaignGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TrackerGK]"
-                      dataType="i8"
-                      name="TrackerGK" />
+                      name="TrackerGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[ImageCreativeGK]"
-                      dataType="i8"
-                      name="ImageCreativeGK" />
+                      name="ImageCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TitleCreativeGK]"
-                      dataType="i8"
-                      name="TitleCreativeGK" />
+                      name="TitleCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[BodyCreativeGK]"
-                      dataType="i8"
-                      name="BodyCreativeGK" />
+                      name="BodyCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[DisplayURLCreativeGK]"
-                      dataType="i8"
-                      name="DisplayURLCreativeGK" />
+                      name="DisplayURLCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[DestinationURLCreativeGK]"
-                      dataType="i8"
-                      name="DestinationURLCreativeGK" />
+                      name="DestinationURLCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[VideoCreativeGK]"
-                      dataType="i8"
-                      name="VideoCreativeGK" />
+                      name="VideoCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[ThemeGK]"
-                      dataType="i8"
-                      name="ThemeGK" />
+                      name="ThemeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[LanguageGK]"
-                      dataType="i8"
-                      name="LanguageGK" />
+                      name="LanguageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[CountryGK]"
-                      dataType="i8"
-                      name="CountryGK" />
+                      name="CountryGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[GeographicGK]"
-                      dataType="i8"
-                      name="GeographicGK" />
+                      name="GeographicGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[LandingPageGK]"
-                      dataType="i8"
-                      name="LandingPageGK" />
+                      name="LandingPageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetPeriodStart]"
-                      dataType="dbTimeStamp"
-                      name="TargetPeriodStart" />
+                      name="TargetPeriodStart"
+                      dataType="dbTimeStamp" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetPeriodEnd]"
-                      dataType="dbTimeStamp"
-                      name="TargetPeriodEnd" />
+                      name="TargetPeriodEnd"
+                      dataType="dbTimeStamp" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[OutputID]"
-                      codePage="1255"
+                      name="OutputID"
                       dataType="str"
                       length="32"
-                      name="OutputID" />
+                      codePage="1255" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
+                      name="Currency"
                       dataType="wstr"
-                      length="10"
-                      name="Currency" />
+                      length="10" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
-                      dataType="numeric"
                       name="Cost"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[OriginalCost]"
-                      dataType="numeric"
                       name="OriginalCost"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[AveragePosition]"
-                      dataType="numeric"
                       name="AveragePosition"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Clicks]"
-                      dataType="i4"
-                      name="Clicks" />
+                      name="Clicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Impressions]"
-                      dataType="i4"
-                      name="Impressions" />
+                      name="Impressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[UniqueImpressions]"
-                      dataType="i4"
-                      name="UniqueImpressions" />
+                      name="UniqueImpressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[UniqueClicks]"
-                      dataType="i4"
-                      name="UniqueClicks" />
+                      name="UniqueClicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetCountryGK]"
-                      dataType="i8"
-                      name="TargetCountryGK" />
+                      name="TargetCountryGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetCityGK]"
-                      dataType="i8"
-                      name="TargetCityGK" />
+                      name="TargetCityGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetEducationGK]"
-                      dataType="i8"
-                      name="TargetEducationGK" />
+                      name="TargetEducationGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMaritalStatusGK]"
-                      dataType="i8"
-                      name="TargetMaritalStatusGK" />
+                      name="TargetMaritalStatusGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetIntrestsGK]"
-                      dataType="i8"
-                      name="TargetIntrestsGK" />
+                      name="TargetIntrestsGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetGenderGK]"
-                      dataType="i8"
-                      name="TargetGenderGK" />
+                      name="TargetGenderGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetToAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetToAgeGroupGK" />
+                      name="TargetToAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetFromAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetFromAgeGroupGK" />
+                      name="TargetFromAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetLanguageGK]"
-                      dataType="i8"
-                      name="TargetLanguageGK" />
+                      name="TargetLanguageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetWorkplaceGK]"
-                      dataType="i8"
-                      name="TargetWorkplaceGK" />
+                      name="TargetWorkplaceGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchCountryGK]"
-                      dataType="i8"
-                      name="TargetMatchCountryGK" />
+                      name="TargetMatchCountryGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchCityGK]"
-                      dataType="i8"
-                      name="TargetMatchCityGK" />
+                      name="TargetMatchCityGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchEducationGK]"
-                      dataType="i8"
-                      name="TargetMatchEducationGK" />
+                      name="TargetMatchEducationGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchLanguageGK]"
-                      dataType="i8"
-                      name="TargetMatchLanguageGK" />
+                      name="TargetMatchLanguageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchWorkplaceGK]"
-                      dataType="i8"
-                      name="TargetMatchWorkplaceGK" />
+                      name="TargetMatchWorkplaceGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchMaritalStatus]"
-                      dataType="i8"
-                      name="TargetMatchMaritalStatus" />
+                      name="TargetMatchMaritalStatus"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchIntrestsGK]"
-                      dataType="i8"
-                      name="TargetMatchIntrestsGK" />
+                      name="TargetMatchIntrestsGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchGenderGK]"
-                      dataType="i8"
-                      name="TargetMatchGenderGK" />
+                      name="TargetMatchGenderGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchToAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetMatchToAgeGroupGK" />
+                      name="TargetMatchToAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[TargetMatchFromAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetMatchFromAgeGroupGK" />
+                      name="TargetMatchFromAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[DownloadedDate]"
-                      dataType="dbTimeStamp"
-                      name="DownloadedDate" />
+                      name="DownloadedDate"
+                      dataType="dbTimeStamp" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[SocialCost]"
-                      dataType="numeric"
                       name="SocialCost"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[SocialClicks]"
-                      dataType="i4"
-                      name="SocialClicks" />
+                      name="SocialClicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[SocialUniqueClicks]"
-                      dataType="i4"
-                      name="SocialUniqueClicks" />
+                      name="SocialUniqueClicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[SocialImpressions]"
-                      dataType="i4"
-                      name="SocialImpressions" />
+                      name="SocialImpressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[SocialUniqueImpressions]"
-                      dataType="i4"
-                      name="SocialUniqueImpressions" />
+                      name="SocialUniqueImpressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Actions]"
-                      dataType="i4"
-                      name="Actions" />
+                      name="Actions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input].ExternalColumns[Connections]"
-                      dataType="i4"
-                      name="Connections" />
+                      name="Connections"
+                      dataType="i4" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
                   refId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input]">
+                  exclusionGroup="1"
+                  synchronousInputId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input]"
+                  isErrorOut="true">
                   <outputColumns>
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
+                      lineageId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
                       specialFlags="1" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
+                      lineageId="Package\Transfer data from staging to DWH\DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
                       specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
@@ -583,59 +583,59 @@
             </component>
             <component
               refId="Package\Transfer data from staging to DWH\Staging"
-              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
               name="Staging"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              description="OLE DB Source"
               usesDispositions="true"
-              version="7">
+              version="7"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7">
               <properties>
                 <property
+                  name="CommandTimeout"
                   dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out.">0</property>
                 <property
+                  name="OpenRowset"
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[10035_SocialChannel]</property>
+                  description="Specifies the name of the database object used to open a rowset.">[dbo].[10035_SocialChannel]</property>
                 <property
+                  name="OpenRowsetVariable"
                   dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."></property>
                 <property
+                  name="SqlCommand"
                   dataType="System.String"
                   description="The SQL command to be executed."
-                  name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
+                  name="SqlCommandVariable"
                   dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  description="The variable that contains the SQL command to be executed."></property>
                 <property
+                  name="DefaultCodePage"
                   dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1255</property>
+                  description="Specifies the column code page to use when code page information is unavailable from the data source.">1255</property>
                 <property
+                  name="AlwaysUseDefaultCodePage"
                   dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
+                  description="Forces the use of the DefaultCodePage property value when describing character data.">false</property>
                 <property
+                  name="AccessMode"
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
-                  name="AccessMode"
                   typeConverter="AccessMode">0</property>
                 <property
+                  name="ParameterMapping"
                   dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
+                  description="The mappings between the parameters in the SQL command and variables."></property>
               </properties>
               <connections>
                 <connection
                   refId="Package\Transfer data from staging to DWH\Staging.Connections[OleDbConnection]"
-                  connectionManagerID="{970E15FD-AD7E-468B-9166-1C440EA95366}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BI_RND.EdgeDWH]"
+                  name="OleDbConnection"
                   description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  connectionManagerID="{970E15FD-AD7E-468B-9166-1C440EA95366}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BI_RND.EdgeDWH]" />
               </connections>
               <outputs>
                 <output
@@ -644,1062 +644,1062 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AccountID]"
+                      name="AccountID"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AccountID]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AccountID]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AccountID]"
-                      name="AccountID"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AccountID]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ChannelID]"
+                      name="ChannelID"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ChannelID]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ChannelID]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ChannelID]"
-                      name="ChannelID"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ChannelID]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdGK]"
+                      name="AdGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AdGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdGK]"
-                      name="AdGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AdGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdgroupGK]"
+                      name="AdgroupGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdgroupGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AdgroupGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AdgroupGK]"
-                      name="AdgroupGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AdgroupGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CampaignGK]"
+                      name="CampaignGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CampaignGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[CampaignGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CampaignGK]"
-                      name="CampaignGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[CampaignGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodStart]"
+                      name="TargetPeriodStart"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodStart]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetPeriodStart]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodStart]"
-                      name="TargetPeriodStart"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetPeriodStart]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodEnd]"
+                      name="TargetPeriodEnd"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodEnd]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetPeriodEnd]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetPeriodEnd]"
-                      name="TargetPeriodEnd"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetPeriodEnd]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Currency]"
+                      name="Currency"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Currency]"
+                      length="10"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
-                      length="10"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Currency]"
-                      name="Currency"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Currency]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OutputID]"
-                      codePage="1255"
+                      name="OutputID"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OutputID]"
+                      length="32"
                       dataType="str"
+                      codePage="1255"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[OutputID]"
-                      length="32"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OutputID]"
-                      name="OutputID"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[OutputID]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AveragePosition]"
+                      name="AveragePosition"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AveragePosition]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AveragePosition]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[AveragePosition]"
-                      name="AveragePosition"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AveragePosition]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Cost]"
+                      name="Cost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Cost]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Cost]"
-                      name="Cost"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Cost]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Clicks]"
+                      name="Clicks"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Clicks]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Clicks]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Clicks]"
-                      name="Clicks"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Clicks]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Impressions]"
+                      name="Impressions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Impressions]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Impressions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Impressions]"
-                      name="Impressions"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Impressions]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueImpressions]"
+                      name="UniqueImpressions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueImpressions]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[UniqueImpressions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueImpressions]"
-                      name="UniqueImpressions"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[UniqueImpressions]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueClicks]"
+                      name="UniqueClicks"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueClicks]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[UniqueClicks]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[UniqueClicks]"
-                      name="UniqueClicks"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[UniqueClicks]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TrackerGK]"
+                      name="TrackerGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TrackerGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TrackerGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TrackerGK]"
-                      name="TrackerGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TrackerGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ImageCreativeGK]"
+                      name="ImageCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ImageCreativeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ImageCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ImageCreativeGK]"
-                      name="ImageCreativeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ImageCreativeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TitleCreativeGK]"
+                      name="TitleCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TitleCreativeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TitleCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TitleCreativeGK]"
-                      name="TitleCreativeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TitleCreativeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[BodyCreativeGK]"
+                      name="BodyCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[BodyCreativeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[BodyCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[BodyCreativeGK]"
-                      name="BodyCreativeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[BodyCreativeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DisplayURLCreativeGK]"
+                      name="DisplayURLCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DisplayURLCreativeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DisplayURLCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DisplayURLCreativeGK]"
-                      name="DisplayURLCreativeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DisplayURLCreativeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DestinationURLCreativeGK]"
+                      name="DestinationURLCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DestinationURLCreativeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DestinationURLCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DestinationURLCreativeGK]"
-                      name="DestinationURLCreativeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DestinationURLCreativeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[VideoCreativeGK]"
+                      name="VideoCreativeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[VideoCreativeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[VideoCreativeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[VideoCreativeGK]"
-                      name="VideoCreativeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[VideoCreativeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ThemeGK]"
+                      name="ThemeGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ThemeGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ThemeGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[ThemeGK]"
-                      name="ThemeGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ThemeGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LanguageGK]"
+                      name="LanguageGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LanguageGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[LanguageGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LanguageGK]"
-                      name="LanguageGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[LanguageGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CountryGK]"
+                      name="CountryGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CountryGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[CountryGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[CountryGK]"
-                      name="CountryGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[CountryGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[GeographicGK]"
+                      name="GeographicGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[GeographicGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[GeographicGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[GeographicGK]"
-                      name="GeographicGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[GeographicGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LandingPageGK]"
+                      name="LandingPageGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LandingPageGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[LandingPageGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[LandingPageGK]"
-                      name="LandingPageGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[LandingPageGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OriginalCost]"
+                      name="OriginalCost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OriginalCost]"
+                      precision="18"
+                      scale="2"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[OriginalCost]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[OriginalCost]"
-                      name="OriginalCost"
-                      precision="18"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[OriginalCost]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetCountryGK]"
+                      name="TargetCountryGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetCountryGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetCountryGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetCountryGK]"
-                      name="TargetCountryGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetCountryGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetCityGK]"
+                      name="TargetCityGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetCityGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetCityGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetCityGK]"
-                      name="TargetCityGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetCityGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetEducationGK]"
+                      name="TargetEducationGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetEducationGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetEducationGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetEducationGK]"
-                      name="TargetEducationGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetEducationGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMaritalStatusGK]"
+                      name="TargetMaritalStatusGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMaritalStatusGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMaritalStatusGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMaritalStatusGK]"
-                      name="TargetMaritalStatusGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMaritalStatusGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetIntrestsGK]"
+                      name="TargetIntrestsGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetIntrestsGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetIntrestsGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetIntrestsGK]"
-                      name="TargetIntrestsGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetIntrestsGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetGenderGK]"
+                      name="TargetGenderGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetGenderGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetGenderGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetGenderGK]"
-                      name="TargetGenderGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetGenderGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetToAgeGroupGK]"
+                      name="TargetToAgeGroupGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetToAgeGroupGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetToAgeGroupGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetToAgeGroupGK]"
-                      name="TargetToAgeGroupGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetToAgeGroupGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetFromAgeGroupGK]"
+                      name="TargetFromAgeGroupGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetFromAgeGroupGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetFromAgeGroupGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetFromAgeGroupGK]"
-                      name="TargetFromAgeGroupGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetFromAgeGroupGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetLanguageGK]"
+                      name="TargetLanguageGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetLanguageGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetLanguageGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetLanguageGK]"
-                      name="TargetLanguageGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetLanguageGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetWorkplaceGK]"
+                      name="TargetWorkplaceGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetWorkplaceGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetWorkplaceGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetWorkplaceGK]"
-                      name="TargetWorkplaceGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetWorkplaceGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchCountryGK]"
+                      name="TargetMatchCountryGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchCountryGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchCountryGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchCountryGK]"
-                      name="TargetMatchCountryGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchCountryGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchCityGK]"
+                      name="TargetMatchCityGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchCityGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchCityGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchCityGK]"
-                      name="TargetMatchCityGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchCityGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchEducationGK]"
+                      name="TargetMatchEducationGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchEducationGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchEducationGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchEducationGK]"
-                      name="TargetMatchEducationGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchEducationGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchLanguageGK]"
+                      name="TargetMatchLanguageGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchLanguageGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchLanguageGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchLanguageGK]"
-                      name="TargetMatchLanguageGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchLanguageGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchWorkplaceGK]"
+                      name="TargetMatchWorkplaceGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchWorkplaceGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchWorkplaceGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchWorkplaceGK]"
-                      name="TargetMatchWorkplaceGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchWorkplaceGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchMaritalStatus]"
+                      name="TargetMatchMaritalStatus"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchMaritalStatus]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchMaritalStatus]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchMaritalStatus]"
-                      name="TargetMatchMaritalStatus"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchMaritalStatus]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchIntrestsGK]"
+                      name="TargetMatchIntrestsGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchIntrestsGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchIntrestsGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchIntrestsGK]"
-                      name="TargetMatchIntrestsGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchIntrestsGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchGenderGK]"
+                      name="TargetMatchGenderGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchGenderGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchGenderGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchGenderGK]"
-                      name="TargetMatchGenderGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchGenderGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchToAgeGroupGK]"
+                      name="TargetMatchToAgeGroupGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchToAgeGroupGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchToAgeGroupGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchToAgeGroupGK]"
-                      name="TargetMatchToAgeGroupGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchToAgeGroupGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchFromAgeGroupGK]"
+                      name="TargetMatchFromAgeGroupGK"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchFromAgeGroupGK]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchFromAgeGroupGK]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[TargetMatchFromAgeGroupGK]"
-                      name="TargetMatchFromAgeGroupGK"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchFromAgeGroupGK]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DownloadedDate]"
+                      name="DownloadedDate"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DownloadedDate]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DownloadedDate]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[DownloadedDate]"
-                      name="DownloadedDate"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DownloadedDate]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialCost]"
+                      name="SocialCost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialCost]"
+                      precision="18"
+                      scale="2"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialCost]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialCost]"
-                      name="SocialCost"
-                      precision="18"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialCost]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialClicks]"
+                      name="SocialClicks"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialClicks]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialClicks]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialClicks]"
-                      name="SocialClicks"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialClicks]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialUniqueClicks]"
+                      name="SocialUniqueClicks"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialUniqueClicks]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialUniqueClicks]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialUniqueClicks]"
-                      name="SocialUniqueClicks"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialUniqueClicks]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialImpressions]"
+                      name="SocialImpressions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialImpressions]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialImpressions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialImpressions]"
-                      name="SocialImpressions"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialImpressions]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialUniqueImpressions]"
+                      name="SocialUniqueImpressions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialUniqueImpressions]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialUniqueImpressions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[SocialUniqueImpressions]"
-                      name="SocialUniqueImpressions"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialUniqueImpressions]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Actions]"
+                      name="Actions"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Actions]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Actions]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Actions]"
-                      name="Actions"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Actions]" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Connections]"
+                      name="Connections"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Connections]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Connections]"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].Columns[Connections]"
-                      name="Connections"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Connections]" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AccountID]"
-                      dataType="i8"
-                      name="AccountID" />
+                      name="AccountID"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ChannelID]"
-                      dataType="i8"
-                      name="ChannelID" />
+                      name="ChannelID"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AdGK]"
-                      dataType="i8"
-                      name="AdGK" />
+                      name="AdGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AdgroupGK]"
-                      dataType="i8"
-                      name="AdgroupGK" />
+                      name="AdgroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[CampaignGK]"
-                      dataType="i8"
-                      name="CampaignGK" />
+                      name="CampaignGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetPeriodStart]"
-                      dataType="dbTimeStamp"
-                      name="TargetPeriodStart" />
+                      name="TargetPeriodStart"
+                      dataType="dbTimeStamp" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetPeriodEnd]"
-                      dataType="dbTimeStamp"
-                      name="TargetPeriodEnd" />
+                      name="TargetPeriodEnd"
+                      dataType="dbTimeStamp" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
+                      name="Currency"
                       dataType="wstr"
-                      length="10"
-                      name="Currency" />
+                      length="10" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[OutputID]"
-                      codePage="1255"
+                      name="OutputID"
                       dataType="str"
                       length="32"
-                      name="OutputID" />
+                      codePage="1255" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[AveragePosition]"
-                      dataType="numeric"
                       name="AveragePosition"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
-                      dataType="numeric"
                       name="Cost"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Clicks]"
-                      dataType="i4"
-                      name="Clicks" />
+                      name="Clicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Impressions]"
-                      dataType="i4"
-                      name="Impressions" />
+                      name="Impressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[UniqueImpressions]"
-                      dataType="i4"
-                      name="UniqueImpressions" />
+                      name="UniqueImpressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[UniqueClicks]"
-                      dataType="i4"
-                      name="UniqueClicks" />
+                      name="UniqueClicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TrackerGK]"
-                      dataType="i8"
-                      name="TrackerGK" />
+                      name="TrackerGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ImageCreativeGK]"
-                      dataType="i8"
-                      name="ImageCreativeGK" />
+                      name="ImageCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TitleCreativeGK]"
-                      dataType="i8"
-                      name="TitleCreativeGK" />
+                      name="TitleCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[BodyCreativeGK]"
-                      dataType="i8"
-                      name="BodyCreativeGK" />
+                      name="BodyCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DisplayURLCreativeGK]"
-                      dataType="i8"
-                      name="DisplayURLCreativeGK" />
+                      name="DisplayURLCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DestinationURLCreativeGK]"
-                      dataType="i8"
-                      name="DestinationURLCreativeGK" />
+                      name="DestinationURLCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[VideoCreativeGK]"
-                      dataType="i8"
-                      name="VideoCreativeGK" />
+                      name="VideoCreativeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[ThemeGK]"
-                      dataType="i8"
-                      name="ThemeGK" />
+                      name="ThemeGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[LanguageGK]"
-                      dataType="i8"
-                      name="LanguageGK" />
+                      name="LanguageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[CountryGK]"
-                      dataType="i8"
-                      name="CountryGK" />
+                      name="CountryGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[GeographicGK]"
-                      dataType="i8"
-                      name="GeographicGK" />
+                      name="GeographicGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[LandingPageGK]"
-                      dataType="i8"
-                      name="LandingPageGK" />
+                      name="LandingPageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[OriginalCost]"
-                      dataType="numeric"
                       name="OriginalCost"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetCountryGK]"
-                      dataType="i8"
-                      name="TargetCountryGK" />
+                      name="TargetCountryGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetCityGK]"
-                      dataType="i8"
-                      name="TargetCityGK" />
+                      name="TargetCityGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetEducationGK]"
-                      dataType="i8"
-                      name="TargetEducationGK" />
+                      name="TargetEducationGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMaritalStatusGK]"
-                      dataType="i8"
-                      name="TargetMaritalStatusGK" />
+                      name="TargetMaritalStatusGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetIntrestsGK]"
-                      dataType="i8"
-                      name="TargetIntrestsGK" />
+                      name="TargetIntrestsGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetGenderGK]"
-                      dataType="i8"
-                      name="TargetGenderGK" />
+                      name="TargetGenderGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetToAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetToAgeGroupGK" />
+                      name="TargetToAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetFromAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetFromAgeGroupGK" />
+                      name="TargetFromAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetLanguageGK]"
-                      dataType="i8"
-                      name="TargetLanguageGK" />
+                      name="TargetLanguageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetWorkplaceGK]"
-                      dataType="i8"
-                      name="TargetWorkplaceGK" />
+                      name="TargetWorkplaceGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchCountryGK]"
-                      dataType="i8"
-                      name="TargetMatchCountryGK" />
+                      name="TargetMatchCountryGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchCityGK]"
-                      dataType="i8"
-                      name="TargetMatchCityGK" />
+                      name="TargetMatchCityGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchEducationGK]"
-                      dataType="i8"
-                      name="TargetMatchEducationGK" />
+                      name="TargetMatchEducationGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchLanguageGK]"
-                      dataType="i8"
-                      name="TargetMatchLanguageGK" />
+                      name="TargetMatchLanguageGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchWorkplaceGK]"
-                      dataType="i8"
-                      name="TargetMatchWorkplaceGK" />
+                      name="TargetMatchWorkplaceGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchMaritalStatus]"
-                      dataType="i8"
-                      name="TargetMatchMaritalStatus" />
+                      name="TargetMatchMaritalStatus"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchIntrestsGK]"
-                      dataType="i8"
-                      name="TargetMatchIntrestsGK" />
+                      name="TargetMatchIntrestsGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchGenderGK]"
-                      dataType="i8"
-                      name="TargetMatchGenderGK" />
+                      name="TargetMatchGenderGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchToAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetMatchToAgeGroupGK" />
+                      name="TargetMatchToAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[TargetMatchFromAgeGroupGK]"
-                      dataType="i8"
-                      name="TargetMatchFromAgeGroupGK" />
+                      name="TargetMatchFromAgeGroupGK"
+                      dataType="i8" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[DownloadedDate]"
-                      dataType="dbTimeStamp"
-                      name="DownloadedDate" />
+                      name="DownloadedDate"
+                      dataType="dbTimeStamp" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialCost]"
-                      dataType="numeric"
                       name="SocialCost"
+                      dataType="numeric"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialClicks]"
-                      dataType="i4"
-                      name="SocialClicks" />
+                      name="SocialClicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialUniqueClicks]"
-                      dataType="i4"
-                      name="SocialUniqueClicks" />
+                      name="SocialUniqueClicks"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialImpressions]"
-                      dataType="i4"
-                      name="SocialImpressions" />
+                      name="SocialImpressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[SocialUniqueImpressions]"
-                      dataType="i4"
-                      name="SocialUniqueImpressions" />
+                      name="SocialUniqueImpressions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Actions]"
-                      dataType="i4"
-                      name="Actions" />
+                      name="Actions"
+                      dataType="i4" />
                     <externalMetadataColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output].ExternalColumns[Connections]"
-                      dataType="i4"
-                      name="Connections" />
+                      name="Connections"
+                      dataType="i4" />
                   </externalMetadataColumns>
                 </output>
                 <output
                   refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  name="OLE DB Source Error Output"
+                  isErrorOut="true">
                   <outputColumns>
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AccountID]"
-                      dataType="i8"
+                      name="AccountID"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AccountID]"
-                      name="AccountID" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ChannelID]"
-                      dataType="i8"
+                      name="ChannelID"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ChannelID]"
-                      name="ChannelID" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AdGK]"
-                      dataType="i8"
+                      name="AdGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AdGK]"
-                      name="AdGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AdgroupGK]"
-                      dataType="i8"
+                      name="AdgroupGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AdgroupGK]"
-                      name="AdgroupGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[CampaignGK]"
-                      dataType="i8"
+                      name="CampaignGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[CampaignGK]"
-                      name="CampaignGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TrackerGK]"
-                      dataType="i8"
+                      name="TrackerGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TrackerGK]"
-                      name="TrackerGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ImageCreativeGK]"
-                      dataType="i8"
+                      name="ImageCreativeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ImageCreativeGK]"
-                      name="ImageCreativeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TitleCreativeGK]"
-                      dataType="i8"
+                      name="TitleCreativeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TitleCreativeGK]"
-                      name="TitleCreativeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[BodyCreativeGK]"
-                      dataType="i8"
+                      name="BodyCreativeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[BodyCreativeGK]"
-                      name="BodyCreativeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[DisplayURLCreativeGK]"
-                      dataType="i8"
+                      name="DisplayURLCreativeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[DisplayURLCreativeGK]"
-                      name="DisplayURLCreativeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[DestinationURLCreativeGK]"
-                      dataType="i8"
+                      name="DestinationURLCreativeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[DestinationURLCreativeGK]"
-                      name="DestinationURLCreativeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[VideoCreativeGK]"
-                      dataType="i8"
+                      name="VideoCreativeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[VideoCreativeGK]"
-                      name="VideoCreativeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ThemeGK]"
-                      dataType="i8"
+                      name="ThemeGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ThemeGK]"
-                      name="ThemeGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[LanguageGK]"
-                      dataType="i8"
+                      name="LanguageGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[LanguageGK]"
-                      name="LanguageGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[CountryGK]"
-                      dataType="i8"
+                      name="CountryGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[CountryGK]"
-                      name="CountryGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[GeographicGK]"
-                      dataType="i8"
+                      name="GeographicGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[GeographicGK]"
-                      name="GeographicGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[LandingPageGK]"
-                      dataType="i8"
+                      name="LandingPageGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[LandingPageGK]"
-                      name="LandingPageGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetCountryGK]"
-                      dataType="i8"
+                      name="TargetCountryGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetCountryGK]"
-                      name="TargetCountryGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetCityGK]"
-                      dataType="i8"
+                      name="TargetCityGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetCityGK]"
-                      name="TargetCityGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetEducationGK]"
-                      dataType="i8"
+                      name="TargetEducationGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetEducationGK]"
-                      name="TargetEducationGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMaritalStatusGK]"
-                      dataType="i8"
+                      name="TargetMaritalStatusGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMaritalStatusGK]"
-                      name="TargetMaritalStatusGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetIntrestsGK]"
-                      dataType="i8"
+                      name="TargetIntrestsGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetIntrestsGK]"
-                      name="TargetIntrestsGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetGenderGK]"
-                      dataType="i8"
+                      name="TargetGenderGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetGenderGK]"
-                      name="TargetGenderGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetToAgeGroupGK]"
-                      dataType="i8"
+                      name="TargetToAgeGroupGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetToAgeGroupGK]"
-                      name="TargetToAgeGroupGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetFromAgeGroupGK]"
-                      dataType="i8"
+                      name="TargetFromAgeGroupGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetFromAgeGroupGK]"
-                      name="TargetFromAgeGroupGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetLanguageGK]"
-                      dataType="i8"
+                      name="TargetLanguageGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetLanguageGK]"
-                      name="TargetLanguageGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetWorkplaceGK]"
-                      dataType="i8"
+                      name="TargetWorkplaceGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetWorkplaceGK]"
-                      name="TargetWorkplaceGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchCountryGK]"
-                      dataType="i8"
+                      name="TargetMatchCountryGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchCountryGK]"
-                      name="TargetMatchCountryGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchCityGK]"
-                      dataType="i8"
+                      name="TargetMatchCityGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchCityGK]"
-                      name="TargetMatchCityGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchEducationGK]"
-                      dataType="i8"
+                      name="TargetMatchEducationGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchEducationGK]"
-                      name="TargetMatchEducationGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchLanguageGK]"
-                      dataType="i8"
+                      name="TargetMatchLanguageGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchLanguageGK]"
-                      name="TargetMatchLanguageGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchWorkplaceGK]"
-                      dataType="i8"
+                      name="TargetMatchWorkplaceGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchWorkplaceGK]"
-                      name="TargetMatchWorkplaceGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchMaritalStatus]"
-                      dataType="i8"
+                      name="TargetMatchMaritalStatus"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchMaritalStatus]"
-                      name="TargetMatchMaritalStatus" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchIntrestsGK]"
-                      dataType="i8"
+                      name="TargetMatchIntrestsGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchIntrestsGK]"
-                      name="TargetMatchIntrestsGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchGenderGK]"
-                      dataType="i8"
+                      name="TargetMatchGenderGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchGenderGK]"
-                      name="TargetMatchGenderGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchToAgeGroupGK]"
-                      dataType="i8"
+                      name="TargetMatchToAgeGroupGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchToAgeGroupGK]"
-                      name="TargetMatchToAgeGroupGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchFromAgeGroupGK]"
-                      dataType="i8"
+                      name="TargetMatchFromAgeGroupGK"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetMatchFromAgeGroupGK]"
-                      name="TargetMatchFromAgeGroupGK" />
+                      dataType="i8" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetPeriodStart]"
-                      dataType="dbTimeStamp"
+                      name="TargetPeriodStart"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetPeriodStart]"
-                      name="TargetPeriodStart" />
+                      dataType="dbTimeStamp" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetPeriodEnd]"
-                      dataType="dbTimeStamp"
+                      name="TargetPeriodEnd"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[TargetPeriodEnd]"
-                      name="TargetPeriodEnd" />
+                      dataType="dbTimeStamp" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Currency]"
-                      dataType="wstr"
-                      length="10"
+                      name="Currency"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Currency]"
-                      name="Currency" />
+                      length="10"
+                      dataType="wstr" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[DownloadedDate]"
-                      dataType="dbTimeStamp"
+                      name="DownloadedDate"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[DownloadedDate]"
-                      name="DownloadedDate" />
+                      dataType="dbTimeStamp" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[OutputID]"
-                      codePage="1255"
-                      dataType="str"
-                      length="32"
+                      name="OutputID"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[OutputID]"
-                      name="OutputID" />
+                      length="32"
+                      dataType="str"
+                      codePage="1255" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AveragePosition]"
-                      dataType="numeric"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AveragePosition]"
                       name="AveragePosition"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[AveragePosition]"
                       precision="18"
-                      scale="2" />
+                      scale="2"
+                      dataType="numeric" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[OriginalCost]"
-                      dataType="numeric"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[OriginalCost]"
                       name="OriginalCost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[OriginalCost]"
                       precision="18"
-                      scale="2" />
+                      scale="2"
+                      dataType="numeric" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Cost]"
-                      dataType="numeric"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Cost]"
                       name="Cost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Cost]"
                       precision="18"
-                      scale="2" />
+                      scale="2"
+                      dataType="numeric" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialCost]"
-                      dataType="numeric"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialCost]"
                       name="SocialCost"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialCost]"
                       precision="18"
-                      scale="2" />
+                      scale="2"
+                      dataType="numeric" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Clicks]"
-                      dataType="i4"
+                      name="Clicks"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Clicks]"
-                      name="Clicks" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Impressions]"
-                      dataType="i4"
+                      name="Impressions"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Impressions]"
-                      name="Impressions" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialClicks]"
-                      dataType="i4"
+                      name="SocialClicks"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialClicks]"
-                      name="SocialClicks" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialUniqueClicks]"
-                      dataType="i4"
+                      name="SocialUniqueClicks"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialUniqueClicks]"
-                      name="SocialUniqueClicks" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[UniqueImpressions]"
-                      dataType="i4"
+                      name="UniqueImpressions"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[UniqueImpressions]"
-                      name="UniqueImpressions" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[UniqueClicks]"
-                      dataType="i4"
+                      name="UniqueClicks"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[UniqueClicks]"
-                      name="UniqueClicks" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialImpressions]"
-                      dataType="i4"
+                      name="SocialImpressions"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialImpressions]"
-                      name="SocialImpressions" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialUniqueImpressions]"
-                      dataType="i4"
+                      name="SocialUniqueImpressions"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[SocialUniqueImpressions]"
-                      name="SocialUniqueImpressions" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Actions]"
-                      dataType="i4"
+                      name="Actions"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Actions]"
-                      name="Actions" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Connections]"
-                      dataType="i4"
+                      name="Connections"
                       lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[Connections]"
-                      name="Connections" />
+                      dataType="i4" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
                       specialFlags="1" />
                     <outputColumn
                       refId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
+                      lineageId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
                       specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
@@ -1710,9 +1710,9 @@
           <paths>
             <path
               refId="Package\Transfer data from staging to DWH.Paths[OLE DB Source Output]"
-              endId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output]" />
+              startId="Package\Transfer data from staging to DWH\Staging.Outputs[OLE DB Source Output]"
+              endId="Package\Transfer data from staging to DWH\DWH.Inputs[OLE DB Destination Input]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1721,12 +1721,12 @@
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{EBF1F1EA-10F1-4E64-9322-3E08771AA81B}"
       DTS:From="Package\DWH rollback SP"
+      DTS:To="Package\Transfer data from staging to DWH"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Transfer data from staging to DWH" />
+      DTS:DTSID="{EBF1F1EA-10F1-4E64-9322-3E08771AA81B}"
+      DTS:CreationName="" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1741,13 +1741,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="246,42"
-          Id="Package\Transfer data from staging to DWH"
-          TopLeft="249.944444444445,234.166666666667" />
-        <NodeLayout
           Size="228,42"
           Id="Package\DWH rollback SP"
           TopLeft="269.944444444445,123.166666666667" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Transfer data from staging to DWH"
+          TopLeft="249.944444444445,234.166666666667" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="383.944444444445,165.166666666667">
