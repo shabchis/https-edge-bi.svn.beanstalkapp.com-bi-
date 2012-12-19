@@ -24,97 +24,111 @@
 	From EDGE_OLTP_OLD.dbo.Constant_Channel 
 
 --****************** Ad and creative hirerchy *****************************
--- Create Ad table (note creativeGK is the same as Ad gk in the migrated data)
-	Insert into	[EdgeObjects].[dbo].[Ad] 
-				([GK] ,[Name] ,[OriginalID] ,[AccountID] ,[ChannelID] ,[ObjectStatus] ,[DestinationUrl] ,[CreativeGK])
-	Select	 [PPC_Creative_GK] , Headline, [creativeid], [Account_ID], [Channel_ID], [creativeStatus], [creativeDestUrl], [PPC_Creative_GK]
-	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative]
-	Where Account_ID = 10035
-			
+-- Basic assuption is that all text creatives are different (title and desc and DisplayURL)
+
 -- Create title creative
 	INSERT INTO [dbo].[Creative] 
-				([GK] ,[ObjectType], [AccountID] , [Name] 
+				([GK] ,[TypeID], [AccountID]  
 				,[int_Field1] ,string_Field1 )
-	Select 1000000000 + [Creative_GK], 'TextCreative',[Account_ID] ,'Title'
+	Select 1000000000 + [Creative_GK], 13 ,[Account_ID] 
 				,1,[Creative_Title] 
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Creative] 
 	Where Account_ID = 10035 
 	
 -- Create description creative
 	INSERT INTO [dbo].[Creative] 
-				([GK] ,[ObjectType], [AccountID] , [Name] 
+				([GK] ,[TypeID], [AccountID]  
 				,[int_Field1] ,string_Field1 )
-	Select 2000000000 + [Creative_GK], 'TextCreative',[Account_ID] ,'Desc'
+	Select 2000000000 + [Creative_GK], 13 ,[Account_ID]
 				,1, 
 				Case when Len(Rtrim(LTrim(IsNull([Creative_Desc1],'') +' '+ IsNull([Creative_Desc2],'')))) =0 
 					then NULL
 					Else Rtrim(LTrim(IsNull([Creative_Desc1],'') +' '+ IsNull([Creative_Desc2],'')))
 				End	 
-				
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Creative] 
-	Where Account_ID = 10035
+	Where Account_ID = 10035 --> 25423 Rows
 		
 -- Create display URL creative
 	INSERT INTO [dbo].[Creative] 
-				([GK] ,[ObjectType], [AccountID] , [Name] 
-				,[int_Field1] ,string_Field1 )
-	Select 1000000000 + [PPC_Creative_GK], 'TextCreative',[Account_ID] ,'DisplayURL'
+				([GK] ,[TypeID], [AccountID] 
+				,[int_Field1] ,string_Field1)
+	Select 1000000000 + [PPC_Creative_GK], 13,[Account_ID] 
 				,2, [creativeVisUrl]
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] 
-	Where Account_ID = 10035 and creativeVisUrl <> 'OptionRally.com'
+	Where Account_ID = 10035 and creativeVisUrl <> 'OptionRally.com' -->7330 Rows
+
+	INSERT INTO [dbo].[Creative] 
+				([GK] ,[TypeID], [AccountID] 
+				,[int_Field1] ,string_Field1)
+	Values ( 1000000000 , 13, 10035 ,2, 'OptionRally.com') --> 1
 
 -- Create composite creative in creative table
 	INSERT INTO [dbo].[Creative] 
-				([GK] ,[ObjectType], [AccountID] , [Name]  )
-	SELECT [PPC_Creative_GK]  ,'CompositeCreative', [Account_ID] ,NULL 
+				([GK] ,[TypeID], [AccountID])
+	SELECT [PPC_Creative_GK]  ,16, [Account_ID]  
 	FROM [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative]
 	where account_id = 10035 --> 25423 Rows
 
 -- Create composite creative for titles
-	INSERT INTO [dbo].[CreativeComposite]
-				([AccountID], [CompositeCreativeGK] ,[ChildName], [SingleCreativeGK])
-	Select distinct CR.[Account_ID], AGCR.[PPC_Creative_GK], 'Title', 1000000000 + CR.[Creative_GK] 
+	INSERT INTO [dbo].[CreativeCompositePart]
+				([AccountID], [CompositeCreativeGK] ,[PartTypeID],PartRole, [PartCreativeGK])
+	Select distinct CR.[Account_ID], AGCR.[PPC_Creative_GK], 13 , 'Title' ,1000000000 + CR.[Creative_GK] 
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Creative]  CR
 		inner join [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] AGCR
 			on cr.Account_ID = AGCR.Account_ID and cr.Creative_GK = AGCR.Creative_GK
 	Where CR.Account_ID = 10035 --> 25423 Rows
 	
 -- Create composite creative for descriptions
-	INSERT INTO [dbo].[CreativeComposite]
-				([AccountID], [CompositeCreativeGK] ,[ChildName], [SingleCreativeGK])
-	Select distinct CR.[Account_ID], AGCR.[PPC_Creative_GK], 'Desc', 2000000000 + CR.[Creative_GK] 
+	INSERT INTO [dbo].[CreativeCompositePart]
+				([AccountID], [CompositeCreativeGK] ,[PartTypeID],PartRole, [PartCreativeGK])
+	Select distinct CR.[Account_ID], AGCR.[PPC_Creative_GK],13 , 'Desc', 2000000000 + CR.[Creative_GK] 
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_Creative]  CR
 		inner join [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] AGCR
 			on cr.Account_ID = AGCR.Account_ID and cr.Creative_GK = AGCR.Creative_GK
 	Where CR.Account_ID = 10035 --> 25423 Rows
 
 	-- Create composite creative for display URLs
-	INSERT INTO [dbo].[CreativeComposite]
-				([AccountID], [CompositeCreativeGK] ,[ChildName], [SingleCreativeGK])
-	Select distinct AGCR.[Account_ID], AGCR.[PPC_Creative_GK], 'DisplayURL', 1000000000 + [PPC_Creative_GK] 
+	INSERT INTO [dbo].[CreativeCompositePart]
+				([AccountID], [CompositeCreativeGK] ,[PartTypeID],PartRole, [PartCreativeGK])
+	Select distinct AGCR.[Account_ID], AGCR.[PPC_Creative_GK], 13 ,'DisplayURL', 1000000000 + [PPC_Creative_GK] 
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] AGCR 
 	Where AGCR.Account_ID = 10035 and creativeVisUrl <> 'OptionRally.com' --> 7033 Rows
 
-	INSERT INTO [dbo].[CreativeComposite]
-				([AccountID], [CompositeCreativeGK] ,[ChildName], [SingleCreativeGK])
-	Select distinct AGCR.[Account_ID], AGCR.[PPC_Creative_GK], 'DisplayURL', 1000000000 
+	INSERT INTO [dbo].[CreativeCompositePart]
+				([AccountID], [CompositeCreativeGK] ,[PartTypeID],PartRole, [PartCreativeGK])
+	Select distinct AGCR.[Account_ID], AGCR.[PPC_Creative_GK], 13, 'DisplayURL', 1000000000 
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] AGCR 
 	Where AGCR.Account_ID = 10035 and creativeVisUrl = 'OptionRally.com' --> 18390 Rows
+
+	-- Create Ad table (note creativeGK is the same as Ad gk in the migrated data)
+	Insert into	[EdgeObjects].[dbo].[Ad] 
+				([GK] ,[Name] ,[OriginalID] ,[AccountID] ,[ChannelID] ,[Status] ,[DestinationUrl] ,[CreativeGK])
+	Select	 [PPC_Creative_GK] , Headline, [creativeid], [Account_ID], [Channel_ID], [creativeStatus], [creativeDestUrl], [PPC_Creative_GK]
+	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative]
+	Where Account_ID = 10035 -->25423 Rows
+			
+	INSERT INTO [dbo].[ObjectTracking] 
+	           ([AccountID]  ,[ChannelID] ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
+     Select [Account_ID], [Channel_ID], 'Ad', [Campaign_GK] , 'Migration'
+	 From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidAdgroupCreative] 
+	 Where Account_ID = 10035 
 
 --****************** Campaigns *****************************
 	set IDENTITY_INSERT [dbo].[EdgeObject] on 
 	INSERT INTO [dbo].[EdgeObject]
-           ([GK], [ObjectType] ,[AccountID] ,[ChannelID] ,[OriginalID] ,[Name] ,[Status] ,[int_Field1] ,[string_Field1])
-	Select  [Campaign_GK]  ,'Campaign',[Account_ID] ,[Channel_ID] ,[campaignid] , NULL, [campStatus], [ScheduleEnabled], [campaign]
+           ([GK], [TypeID] ,[AccountID] ,[ChannelID] ,[OriginalID]  ,[Status] ,[int_Field1] ,[string_Field1])
+	Select  [Campaign_GK]  ,1 ,[Account_ID] ,[Channel_ID] ,[campaignid] , [campStatus], [ScheduleEnabled], [campaign]
 	From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidCampaign]
-	set IDENTITY_INSERT [dbo].[EdgeObject]  off
+	set IDENTITY_INSERT [dbo].[EdgeObject]  off --> 189 Rows
 
 	INSERT INTO [dbo].[ObjectTracking] 
 	           ([AccountID]  ,[ChannelID] ,[ObjectTable] ,[ObjectGK] ,[DeliveryOutputID])
      Select [Account_ID], [Channel_ID], 'EdgeObject', [Campaign_GK] , 'Migration'
 	 From [EDGE_OLTP_OLD].[dbo].[UserProcess_GUI_PaidCampaign] 
 
-	
+-- ####################################################
+ -- Migration till here, the Objecttracking not yet inserted 
+-- ####################################################	
 --****************** Adgroup *****************************
 	set IDENTITY_INSERT [dbo].[EdgeObject] on 
 
