@@ -11,7 +11,7 @@
 <DTS:Property DTS:Name="VersionMajor">1</DTS:Property>
 <DTS:Property DTS:Name="VersionMinor">0</DTS:Property>
 <DTS:Property DTS:Name="VersionBuild">117</DTS:Property>
-<DTS:Property DTS:Name="VersionGUID">{1D99A6EE-5DB3-4811-8BE5-2AC615C2F25F}</DTS:Property>
+<DTS:Property DTS:Name="VersionGUID">{9D304E93-1280-4B3F-B9A1-1EAC1C15918D}</DTS:Property>
 <DTS:Property DTS:Name="EnableConfig">0</DTS:Property>
 <DTS:Property DTS:Name="CheckpointFileName"></DTS:Property>
 <DTS:Property DTS:Name="SaveCheckpoints">0</DTS:Property>
@@ -584,6 +584,30 @@
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">Microsoft.DataTransformationServices.Tasks.DTSProcessingTask.DTSProcessingTask, Microsoft.SqlServer.ASTasks, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</DTS:Property>
 <DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property><DTS:ObjectData><ASProcessingData ConnectionName="Seperia_UDM" ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;Object&gt;&lt;DatabaseID&gt;Seperia_UDM&lt;/DatabaseID&gt;&lt;CubeID&gt;ContentSAManage&lt;/CubeID&gt;&lt;/Object&gt;&lt;Type&gt;ProcessFull&lt;/Type&gt;&lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&lt;/Process&gt;&lt;/Batch&gt;"/></DTS:ObjectData></DTS:Executable>
+<DTS:Executable DTS:ExecutableType="Microsoft.DataTransformationServices.Tasks.DTSProcessingTask.DTSProcessingTask, Microsoft.SqlServer.ASTasks, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:ThreadHint="0">
+<DTS:Property DTS:Name="ExecutionLocation">0</DTS:Property>
+<DTS:Property DTS:Name="ExecutionAddress"></DTS:Property>
+<DTS:Property DTS:Name="TaskContact"></DTS:Property>
+<DTS:Property DTS:Name="ForceExecValue">0</DTS:Property>
+<DTS:Property DTS:Name="ExecValue" DTS:DataType="3">0</DTS:Property>
+<DTS:Property DTS:Name="ForceExecutionResult">-1</DTS:Property>
+<DTS:Property DTS:Name="Disabled">0</DTS:Property>
+<DTS:Property DTS:Name="FailPackageOnFailure">0</DTS:Property>
+<DTS:Property DTS:Name="FailParentOnFailure">0</DTS:Property>
+<DTS:Property DTS:Name="MaxErrorCount">1</DTS:Property>
+<DTS:Property DTS:Name="ISOLevel">1048576</DTS:Property>
+<DTS:Property DTS:Name="LocaleID">-1</DTS:Property>
+<DTS:Property DTS:Name="TransactionOption">1</DTS:Property>
+<DTS:Property DTS:Name="DelayValidation">0</DTS:Property>
+<DTS:LoggingOptions>
+<DTS:Property DTS:Name="LoggingMode">0</DTS:Property>
+<DTS:Property DTS:Name="FilterKind">1</DTS:Property>
+<DTS:Property DTS:Name="EventFilter" DTS:DataType="8"></DTS:Property></DTS:LoggingOptions>
+<DTS:Property DTS:Name="ObjectName">ContentXFSOL</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{9B89D65A-47FD-4E6E-954C-9166831FAB9E}</DTS:Property>
+<DTS:Property DTS:Name="Description"></DTS:Property>
+<DTS:Property DTS:Name="CreationName">Microsoft.DataTransformationServices.Tasks.DTSProcessingTask.DTSProcessingTask, Microsoft.SqlServer.ASTasks, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</DTS:Property>
+<DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property><DTS:ObjectData><ASProcessingData ConnectionName="Seperia_UDM" ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;Object&gt;&lt;DatabaseID&gt;Seperia_UDM&lt;/DatabaseID&gt;&lt;CubeID&gt;ContentXFSOL&lt;/CubeID&gt;&lt;/Object&gt;&lt;Type&gt;ProcessFull&lt;/Type&gt;&lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&lt;/Process&gt;&lt;/Batch&gt;"/></DTS:ObjectData></DTS:Executable>
 <DTS:PrecedenceConstraint>
 <DTS:Property DTS:Name="Value">2</DTS:Property>
 <DTS:Property DTS:Name="EvalOp">2</DTS:Property>
@@ -717,6 +741,15 @@
 <DTS:Property DTS:Name="Expression"></DTS:Property><DTS:Executable IDREF="{66501580-95C2-49B0-86E9-A53353F10E62}" DTS:IsFrom="-1"/><DTS:Executable IDREF="{63494F55-3D4C-4FBB-90B9-650FE301C8FD}" DTS:IsFrom="0"/>
 <DTS:Property DTS:Name="ObjectName">Constraint 7</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{3BB9A15A-D22C-4A1D-BC66-58E939CDDC6B}</DTS:Property>
+<DTS:Property DTS:Name="Description"></DTS:Property>
+<DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PrecedenceConstraint>
+<DTS:PrecedenceConstraint>
+<DTS:Property DTS:Name="Value">2</DTS:Property>
+<DTS:Property DTS:Name="EvalOp">2</DTS:Property>
+<DTS:Property DTS:Name="LogicalAnd">-1</DTS:Property>
+<DTS:Property DTS:Name="Expression"></DTS:Property><DTS:Executable IDREF="{36C5B4B7-3F9B-474F-855F-E0CB81DC6482}" DTS:IsFrom="-1"/><DTS:Executable IDREF="{9B89D65A-47FD-4E6E-954C-9166831FAB9E}" DTS:IsFrom="0"/>
+<DTS:Property DTS:Name="ObjectName">{F2EFA287-3A54-4C49-B223-E2F7C3A7B391}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{F2EFA287-3A54-4C49-B223-E2F7C3A7B391}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PrecedenceConstraint>
 <DTS:Property DTS:Name="ObjectName">Pkg_3020_Process_Content_Olap</DTS:Property>
