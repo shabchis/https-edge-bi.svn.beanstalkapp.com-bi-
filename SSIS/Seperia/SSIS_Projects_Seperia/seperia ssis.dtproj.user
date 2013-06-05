@@ -5,8 +5,18 @@
       <Name>Development</Name>
       <Options>
         <Run64BitRuntime>false</Run64BitRuntime>
-        <UserIDs />
-        <UserPasswords />
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>Seperia_DWH</Id>
+            <Name>Seperia_DWH</Name>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>Seperia_DWH</Id>
+            <Name>Seperia_DWH</Name>
+          </ConfigurationSetting>
+        </UserPasswords>
         <OfflineMode>false</OfflineMode>
         <ProgressReporting>true</ProgressReporting>
       </Options>
