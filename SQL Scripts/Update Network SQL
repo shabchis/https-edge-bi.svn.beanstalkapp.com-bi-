@@ -1,0 +1,10 @@
+  -- update network 
+  update 
+		Seperia_DWH.dbo.Dwh_Fact_PPC_Campaigns
+	 set   ad_type = 7 , adwords_type_code = 7 , adwords_type = 'Social'
+	where  day_id > 20130601 and Channel_ID = 6 
+	
+	update 
+		Seperia_DWH.dbo.Dwh_Fact_PPC_Campaigns
+	 set   ad_type = 1 , adwords_type_code = 1 , adwords_type = 'Search only'
+	where   day_id > 20130601 and Channel_ID in (4,14) 
