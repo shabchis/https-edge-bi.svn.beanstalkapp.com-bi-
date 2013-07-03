@@ -1,0 +1,9 @@
+-- Gateways from BO which was deleted
+		
+select distinct fact.gateway_gk --  , fact.gateway_id as oldGTWId, NULL as newGTWId
+-- into #TempGTW_toDelete
+from  [dbo].[Dwh_Ref_MeasureGroupRef] fact
+	left join [dbo].[Dwh_Dim_Getways] gtw
+		on fact.account_id = gtw.account_id and fact.gateway_gk = gtw.gateway_gk
+where	fact.account_id = 7  
+		and gtw.gateway_gk is null
