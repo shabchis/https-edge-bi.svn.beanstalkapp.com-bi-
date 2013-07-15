@@ -1,0 +1,127 @@
+﻿<ConfigurationSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Database>
+    <DataSources>
+      <DataSource>
+        <ID>Edge DWH</ID>
+        <ConnectionString>Provider=SQLNCLI11.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=EdgeDWH</ConnectionString>
+        <ImpersonationInfo>
+          <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">ImpersonateServiceAccount</ImpersonationMode>
+          <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+        </ImpersonationInfo>
+      </DataSource>
+    </DataSources>
+    <Dimensions>
+      <Dimension>
+        <ID>DIM HOUR</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM TIME</ID>
+      </Dimension>
+      <Dimension>
+        <ID>7 DWH DIM TRACKER</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM TEXTCREATIVE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM ADGROUP</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM CAMPAIGN</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM TEXTCREATIVETYPE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM ADTYPE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM DESTINATION</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM KEYWORDMATCHTYPE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM PLACEMENTTYPE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM COMPOSITECREATIVE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>KEYWORDTARGET</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM PLACEMENTTARGET</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM KEYWORD TARGET MATCH</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM PLACEMENT TARGET MATCH</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM IMAGECREATIVE</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM COMPOSITECREATIVEMATCH</ID>
+      </Dimension>
+      <Dimension>
+        <ID>IMAGECREATIVEMATCH</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DIM TEXTCREATIVEMATCH</ID>
+      </Dimension>
+    </Dimensions>
+    <Cubes>
+      <Cube>
+        <ID>Edge DWH</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>7 DWH FACT SEARCH</ID>
+            <Partitions>
+              <Partition>
+                <ID>7 DWH FACT SEARCH</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>7 DWH FACT BACKEND</ID>
+            <Partitions>
+              <Partition>
+                <ID>7 DWH FACT BACKEND</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>7 DWH FACT TEXTCREATIVE</ID>
+            <Partitions>
+              <Partition>
+                <ID>7 DWH FACT TEXTCREATIVE</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>7 DWH FACT SEARCH BO REF</ID>
+            <Partitions>
+              <Partition>
+                <ID>7 DWH FACT SEARCH BO REF</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>7 DWH FACT TEXTCREATIVE REF</ID>
+            <Partitions>
+              <Partition>
+                <ID>7 DWH FACT TEXTCREATIVE REF</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+    </Cubes>
+    <DataSourceImpersonationInfo>
+      <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
+      <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+    </DataSourceImpersonationInfo>
+  </Database>
+</ConfigurationSettings>
