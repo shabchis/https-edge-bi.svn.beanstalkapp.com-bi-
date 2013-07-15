@@ -1,0 +1,105 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="11586013-0aa9-454e-98de-5be25e4cff9a" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Edge DWH</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>7 DWH FACT SEARCH</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="2577f273-a01d-4176-b16c-85bdc880e495">
+          <ID>7 DWH FACT SEARCH</ID>
+          <Name>7 DWH FACT SEARCH</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="8d8eb49d-6aaf-4d8f-8b2d-a805e5177138">
+            <DataSourceViewID>Edge DWH</DataSourceViewID>
+            <TableID>dbo_7_DWH_FACT_SEARCH</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>7 DWH FACT BACKEND</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="305ddac2-b0e1-4aeb-81c2-da0436e94050">
+          <ID>7 DWH FACT BACKEND</ID>
+          <Name>7 DWH FACT BACKEND</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="f06de6d3-f779-4b04-aece-c40b8ec99819">
+            <DataSourceViewID>Edge DWH</DataSourceViewID>
+            <TableID>dbo_7_DWH_FACT_BACKEND</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>7 DWH FACT TEXTCREATIVE</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="1db9567f-a17c-4e2a-b6f2-c62adf31d960">
+          <ID>7 DWH FACT TEXTCREATIVE</ID>
+          <Name>7 DWH FACT TEXTCREATIVE</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="a4a3d8c2-8c12-4d42-8a40-d2aa2791bbed">
+            <DataSourceViewID>Edge DWH</DataSourceViewID>
+            <TableID>dbo_7_DWH_FACT_TEXTCREATIVE</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>7 DWH FACT SEARCH BO REF</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="38e0fd40-eab2-4307-81c7-c7719f784414">
+          <ID>7 DWH FACT SEARCH BO REF</ID>
+          <Name>7 DWH FACT SEARCH BO REF</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="8df8cd61-4673-49ef-9523-3a2c39d26fc3">
+            <DataSourceViewID>Edge DWH</DataSourceViewID>
+            <TableID>dbo_7_DWH_FACT_SEARCH_BO_REF</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>7 DWH FACT TEXTCREATIVE REF</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="e5d00629-cb11-4cab-a79c-a720145ed12c">
+          <ID>7 DWH FACT TEXTCREATIVE REF</ID>
+          <Name>7 DWH FACT TEXTCREATIVE REF</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="515c26d0-c846-481f-b54e-243b3aacacc5">
+            <DataSourceViewID>Edge DWH</DataSourceViewID>
+            <TableID>dbo_7_DWH_FACT_TEXTCREATIVE_REF</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

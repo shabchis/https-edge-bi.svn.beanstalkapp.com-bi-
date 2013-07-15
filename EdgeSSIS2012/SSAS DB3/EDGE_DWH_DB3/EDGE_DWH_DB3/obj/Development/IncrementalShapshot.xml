@@ -1,0 +1,194 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>EDGE_DWH_DB3</Database>
+    <Server>localhost</Server>
+    <ConnectionString>DataSource=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>M3+Ty6eNz6Z0TDZpA2GMYYxoorg=7/2/2013 3:17:29 PM7/2/2013 3:17:29 PM</TimeStamp>
+        <ID>
+          <String>Edge DWH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>xaNt40asM7yuWEci0ZmLZ/g2fLo=7/15/2013 4:51:57 PM7/2/2013 3:19:47 PM</TimeStamp>
+        <ID>
+          <String>Edge DWH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>wWqn/slrtuulV1NHTkE0bcGK1uY=7/15/2013 12:50:55 PM7/15/2013 12:50:03 PM</TimeStamp>
+        <ID>
+          <String>DIM HOUR</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>hZlJdH8wRLQTpF3liUZj8x7p1aQ=7/15/2013 12:53:56 PM7/15/2013 12:53:16 PM</TimeStamp>
+        <ID>
+          <String>DIM TIME</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>s/YwbvsEFJjkpRKy3omoCj/Jgbg=7/15/2013 12:55:53 PM7/15/2013 12:54:59 PM</TimeStamp>
+        <ID>
+          <String>7 DWH DIM TRACKER</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>CyFi0YOwhXzN1UTD91yM7q7hHbQ=7/15/2013 2:29:23 PM7/15/2013 12:56:46 PM</TimeStamp>
+        <ID>
+          <String>DIM TEXTCREATIVE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ahFxLh/7N87aumZi6JMcpftpNN8=7/15/2013 2:29:28 PM7/15/2013 12:58:12 PM</TimeStamp>
+        <ID>
+          <String>DIM ADGROUP</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>5u89ShEPyeXtEJ4m8+4j8O7Qpos=7/15/2013 2:10:42 PM7/15/2013 2:07:59 PM</TimeStamp>
+        <ID>
+          <String>DIM CAMPAIGN</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>J3GztH3H8QLhw1WJQp5xv4TsmWs=7/15/2013 2:29:40 PM7/15/2013 2:12:20 PM</TimeStamp>
+        <ID>
+          <String>DIM TEXTCREATIVETYPE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>GR5/7IrhnMpyxdgIF3Wmq0fnnlU=7/15/2013 2:29:46 PM7/15/2013 2:13:21 PM</TimeStamp>
+        <ID>
+          <String>DIM ADTYPE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>XQDTcL40MywLu5zVY4pN6QTwe0Q=7/15/2013 2:16:49 PM7/15/2013 2:15:10 PM</TimeStamp>
+        <ID>
+          <String>DIM DESTINATION</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>rxxKo8M/BCh27VRFNcDDhiSCOOg=7/15/2013 2:29:54 PM7/15/2013 2:17:55 PM</TimeStamp>
+        <ID>
+          <String>DIM KEYWORDMATCHTYPE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>5iCDKM8gkPbwV6fMJuwcuSaeNmY=7/15/2013 2:30:01 PM7/15/2013 2:19:53 PM</TimeStamp>
+        <ID>
+          <String>DIM PLACEMENTTYPE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Ho7QsHU9YU2fhz57KPXtE7HaniY=7/15/2013 2:53:50 PM7/15/2013 2:25:08 PM</TimeStamp>
+        <ID>
+          <String>DIM COMPOSITECREATIVE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>qX2r1fTNtit8bDUoqjmcawXTTec=7/15/2013 2:30:12 PM7/15/2013 2:27:24 PM</TimeStamp>
+        <ID>
+          <String>KEYWORDTARGET</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>hzWPRqqdioYtG+AFRgBaRceao9k=7/15/2013 2:30:18 PM7/15/2013 2:29:00 PM</TimeStamp>
+        <ID>
+          <String>DIM PLACEMENTTARGET</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>5ysWcvRoMBS/5xcVcjPS+lTaejE=7/15/2013 2:42:08 PM7/15/2013 2:32:15 PM</TimeStamp>
+        <ID>
+          <String>DIM KEYWORD TARGET MATCH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ziAf8tSS7faR3FzquLT/QyjCHyw=7/15/2013 2:42:08 PM7/15/2013 2:34:29 PM</TimeStamp>
+        <ID>
+          <String>DIM PLACEMENT TARGET MATCH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Idkhe3M5lc0Hbp/61+W7pOxleHs=7/15/2013 2:46:02 PM7/15/2013 2:45:22 PM</TimeStamp>
+        <ID>
+          <String>DIM IMAGECREATIVE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Zglt3hCpIW+A38L+lnkgYShBqhA=7/15/2013 2:47:10 PM7/15/2013 2:47:10 PM</TimeStamp>
+        <ID>
+          <String>DIM COMPOSITECREATIVEMATCH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>6/bH9fCmP0fEdMryb2vdCzEgmsI=7/15/2013 2:52:27 PM7/15/2013 2:51:17 PM</TimeStamp>
+        <ID>
+          <String>IMAGECREATIVEMATCH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>UN9/jwmCYsWdl48szTAaM2KPOaY=7/15/2013 2:53:33 PM7/15/2013 2:53:20 PM</TimeStamp>
+        <ID>
+          <String>DIM TEXTCREATIVEMATCH</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>wr36Tx6h2V+EH2/zQkAGtnvKjdA=7/15/2013 4:55:37 PM7/15/2013 2:59:28 PMcIvUnmTX+zsRNScSOMk4Qi9WeJU=7/15/2013 2:59:29 PM7/15/2013 2:59:28 PM</TimeStamp>
+        <ID>
+          <String>Edge DWH</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>wtSn0xRm69B5+GdBNYIL+hm6Dv0=7/2/2013 3:16:28 PM7/2/2013 3:16:27 PM</TimeStamp>
+      <ID>
+        <String>EDGE_DWH_DB3</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2013-07-15T13:55:44.386667Z</LastDeployed>
+</DeploymentSnapshot>
