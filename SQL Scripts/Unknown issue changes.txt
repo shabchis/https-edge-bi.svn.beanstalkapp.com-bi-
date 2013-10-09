@@ -1,0 +1,4 @@
+Step in the gateways SSIS, this lines was removed from step "Replace Adgroup_gk when Gateway_id is 0 issue" in "STG to DWH" phase.
+
+Ad_Group_GK , Getway_ID == "0" ? Account_ID == -1 || Getway_ID == "Unknown" ? -1 : (-1) * (Account_ID) : Ad_Group_GK
+Channel_id, Getway_ID == "0" || Getway_ID == "-1" || Getway_ID == "Unknown" ? -1 : Channel_id
