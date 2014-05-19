@@ -1,0 +1,24 @@
+INSERT INTO seperia_dwh..[gtw_customerid_distinct_20140519] (AccountID ,	gateway_gk ,	Customer_id)
+  SELECT distinct ACCOUNT_ID, gateway_gk , customer_id
+  from seperia_dwh..dwh_fact_ppc_campaigns
+  where day_id BETWEEN 20130100 and 20140500
+	 and Customer_ID != CAST(ACCOUNT_ID AS NVARCHAR(255)) and Customer_ID is not null
+ 
+-- already exists-----
+  SELECT gtw.accountid ,gtw.gateway_gk, gtw.customer_id
+  FROM [Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef] ref
+	inner join [Seperia_DWH].[dbo].[gtw_customerid_distinct_20140519] gtw
+		on ref.account_id = gtw.accountid
+		and ref.Gateway_GK = gtw.Gateway_GK
+  where ref.account_id = 7 and ref.Customer_ID  = '7' and gtw.customer_id != '7' 
+  
+  -- need to run it per account ID
+  UPDATE  [Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef]
+  SET Customer_ID = gtw.customer_id
+  from [Seperia_DWH].[dbo].[gtw_customerid_distinct_20140519] gtw
+	where [Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef].account_ID = gtw.accountid
+	 and  [Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef].Gateway_GK = gtw.Gateway_GK
+	 ------ --------------------------------  change account_id -------------------
+	 and  [Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef].account_id = 7 
+	 and  [Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef].Customer_ID  = CAST([Seperia_DWH].[dbo].[Dwh_Ref_MeasureGroupRef].ACCOUNT_ID AS NVARCHAR(255)) 
+	 and  gtw.customer_id != gtw.accountid
